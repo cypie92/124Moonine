@@ -21,10 +21,10 @@ const attractions = {
     { id: 5, name: 'Dessert House', lat: 4.8695, lng: 100.7230, image: '/assets/images/attractions/food-5.jpg', description: 'Local desserts & sweets', distance: '0.3 km' }
   ],
   attraction: [
-    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: '/assets/images/attractions/zoo-taiping.png', description: 'Malaysia\'s first night safari zoo', distance: '3.0 km' },
-    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: '/assets/images/attractions/perak-museum.png', description: 'Oldest museum in Malaysia', distance: '2.1 km' },
-    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: '/assets/images/attractions/clock-tower.png', description: 'Historic Taiping landmark', distance: '2.3 km' },
-    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: '/assets/images/attractions/dataran-warisan.png', description: 'Heritage Square of Taiping', distance: '2.3 km' }
+    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: '/assets/images/attractions/zoo-taiping.png', description: 'Malaysia\'s first night safari zoo', distance: '3.0 km', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
+    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: '/assets/images/attractions/perak-museum.png', description: 'Oldest museum in Malaysia', distance: '2.1 km', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
+    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: '/assets/images/attractions/clock-tower.png', description: 'Historic Taiping landmark', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
+    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: '/assets/images/attractions/dataran-warisan.png', description: 'Heritage Square of Taiping', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
   ],
   photoSpot: [
     { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: '/assets/images/attractions/photo-1.jpg', description: 'Iconic tree-lined path', distance: '2.3 km' },
@@ -117,7 +117,7 @@ function showCategory(category) {
             <h4 style="font-weight: bold; margin: 0 0 6px 0; color: #131615; font-size: 15px;">${attraction.name}</h4>
             <p style="font-size: 13px; color: #5C6664; margin: 0 0 8px 0; line-height: 1.4;">${attraction.description}</p>
             <p style="font-size: 12px; color: #376d64; font-weight: 600; margin: 0 0 12px 0;">${attraction.distance} from homestay</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=${attraction.lat},${attraction.lng}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+            <a href="${attraction.mapUrl || `https://www.google.com/maps/search/?api=1&query=${attraction.lat},${attraction.lng}`}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
               <span style="font-size: 16px;">&#x2197;</span> Explore
             </a>
           </div>
