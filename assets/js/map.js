@@ -19,7 +19,7 @@ const HOMESTAY_LOCATION = {
   lat: 4.8688581,
   lng: 100.7278357,
   name: '124 By Moonine Homes',
-  image: `${MAP_BASE}/assets/images/homestay-marker.png`,
+  image: `${MAP_BASE}/assets/images/homestay-marker.jpg`,
   mapUrl: 'https://maps.app.goo.gl/kdjP9qjCCXb7RqBb7'
 };
 
@@ -34,18 +34,18 @@ const attractions = {
     { id: 5, name: 'Ansari Famous Cendol', lat: 4.8545, lng: 100.7395, image: `${MAP_BASE}/assets/images/attractions/food-5.jpg`, description: 'Famous local dessert spot', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/8LkKqnfD3mZyv9YJ6' }
   ],
   attraction: [
-    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/zoo-taiping.png`, description: 'Malaysia\'s first night safari zoo', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
-    { id: 2, name: 'Taiping Lake Gardens', lat: 4.8540, lng: 100.7440, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Beautiful lake gardens, oldest in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
-    { id: 3, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Oldest museum in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
-    { id: 4, name: 'KTM Taiping Station', lat: 4.8515, lng: 100.7365, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic railway station', distance: '5 min drive', mapUrl: 'https://maps.app.goo.gl/j5vLjZhH3NWFPyBV7' },
-    { id: 5, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran-warisan.png`, description: 'Heritage Square of Taiping', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
+    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/taiping zoo garden.webp`, description: 'Malaysia\'s first night safari zoo', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
+    { id: 2, name: 'Taiping Lake Gardens', lat: 4.8540, lng: 100.7440, image: `${MAP_BASE}/assets/images/attractions/taiping_lake_garden.webp`, description: 'Beautiful lake gardens, oldest in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
+    { id: 3, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak_museum.webp`, description: 'Oldest museum in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
+    { id: 4, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock_tower.png`, description: 'Historic British-era landmark', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
+    { id: 5, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran_warisan.webp`, description: 'Heritage Square of Taiping', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
   ],
   photoSpot: [
-    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: `${MAP_BASE}/assets/images/attractions/photo-1.jpg`, description: 'Iconic tree-lined path at Lake Gardens', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
-    { id: 2, name: 'Taiping Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic British-era landmark', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
-    { id: 3, name: 'Antong Coffee Mill', lat: 4.8720, lng: 100.7150, image: `${MAP_BASE}/assets/images/attractions/photo-2.jpg`, description: 'Traditional coffee factory since 1933', distance: '5 min drive', mapUrl: 'https://maps.app.goo.gl/QRyqQknPQTgmfGnq9' },
-    { id: 4, name: 'Spritzer EcoPark', lat: 4.8400, lng: 100.7100, image: `${MAP_BASE}/assets/images/attractions/photo-4.jpg`, description: 'Natural eco park with activities', distance: '15 min drive', mapUrl: 'https://maps.app.goo.gl/GKfmW8XSZT6FYLv38' },
-    { id: 5, name: 'Kuala Sepetang', lat: 4.8400, lng: 100.6300, image: `${MAP_BASE}/assets/images/attractions/photo-5.jpg`, description: 'Fishing village & mangrove tours', distance: '20 min drive', mapUrl: 'https://maps.app.goo.gl/yJvM4MxXC6Xjgc3N6' }
+    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: `${MAP_BASE}/assets/images/attractions/taiping_lake_garden.webp`, description: 'Iconic tree-lined path at Lake Gardens', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
+    { id: 2, name: 'Taiping Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock_tower.png`, description: 'Historic British-era landmark', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
+    { id: 3, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak_museum.webp`, description: 'Oldest museum in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
+    { id: 4, name: 'Dataran Warisan', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran_warisan.webp`, description: 'Heritage Square of Taiping', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' },
+    { id: 5, name: 'Zoo Taiping', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/taiping zoo garden.webp`, description: 'Malaysia\'s first night safari zoo', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' }
   ]
 };
 
@@ -70,25 +70,33 @@ function initHomeMap(containerId) {
     maxZoom: 20
   }).addTo(map);
 
-  // Add homestay marker with custom image
+  // Add homestay marker with custom image - circular with dark green border and "You are here" indicator
   const homestayIcon = L.divIcon({
     className: 'homestay-marker',
-    html: `<img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">`,
-    iconSize: [100, 100],
-    iconAnchor: [50, 50]
+    html: `
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 85px; height: 85px; object-fit: cover; border-radius: 50%; border: 5px solid #376d64; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <span style="background: #376d64; color: white; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 10px; margin-top: 4px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">You are here</span>
+      </div>
+    `,
+    iconSize: [95, 115],
+    iconAnchor: [47, 55]
   });
 
   L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], { icon: homestayIcon })
     .addTo(map)
     .bindPopup(`
-      <div style="text-align: center; padding: 12px; width: 180px;">
-        <h4 style="font-weight: bold; margin: 0 0 8px 0; color: #131615; font-size: 16px;">${HOMESTAY_LOCATION.name}</h4>
-        <p style="font-size: 13px; color: #5C6664; margin: 0 0 12px 0;">Your homestay</p>
-        <a href="${HOMESTAY_LOCATION.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
-          <span style="font-size: 16px;">&#x2197;</span> Directions
-        </a>
+      <div style="text-align: center; padding: 0; width: 200px;">
+        <img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 200px; height: 200px; object-fit: cover; display: block;" onerror="this.style.display='none'">
+        <div style="padding: 12px;">
+          <h4 style="font-weight: bold; margin: 0 0 6px 0; color: #131615; font-size: 15px;">${HOMESTAY_LOCATION.name}</h4>
+          <p style="font-size: 13px; color: #5C6664; margin: 0 0 12px 0;">Your homestay</p>
+          <a href="${HOMESTAY_LOCATION.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+            <span style="font-size: 16px;">&#x2197;</span> Directions
+          </a>
+        </div>
       </div>
-    `, { maxWidth: 200, className: 'custom-popup' });
+    `, { maxWidth: 220, className: 'custom-popup' });
 
   // Load initial category
   showCategory('attraction');
@@ -120,12 +128,12 @@ function showCategory(category) {
   // Add markers for category
   const categoryAttractions = attractions[category] || [];
   categoryAttractions.forEach(attraction => {
-    // Create custom image marker - just the image
+    // Create custom image marker - circular with dark green border
     const customIcon = L.divIcon({
       className: 'attraction-marker',
-      html: `<img src="${attraction.image}" alt="${attraction.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" onerror="this.outerHTML='<div style=\\'width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#376d64;color:white;box-shadow:0 4px 12px rgba(0,0,0,0.3);\\'><span class=\\'material-symbols-outlined\\'>place</span></div>'">`,
-      iconSize: [80, 80],
-      iconAnchor: [40, 40]
+      html: `<img src="${attraction.image}" alt="${attraction.name}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%; border: 4px solid #376d64; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" onerror="this.outerHTML='<div style=\\'width:70px;height:70px;border-radius:50%;border:4px solid #376d64;display:flex;align-items:center;justify-content:center;background:#376d64;color:white;box-shadow:0 4px 12px rgba(0,0,0,0.3);\\'><span class=\\'material-symbols-outlined\\'>place</span></div>'">`,
+      iconSize: [78, 78],
+      iconAnchor: [39, 39]
     });
 
     const marker = L.marker([attraction.lat, attraction.lng], { icon: customIcon })
