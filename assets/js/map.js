@@ -21,11 +21,10 @@ const attractions = {
     { id: 5, name: 'Dessert House', lat: 4.8695, lng: 100.7230, image: '/assets/images/attractions/food-5.jpg', description: 'Local desserts & sweets', distance: '0.3 km' }
   ],
   attraction: [
-    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: '/assets/images/attractions/attraction-1.jpg', description: 'Malaysia\'s first night safari zoo', distance: '3.2 km' },
-    { id: 2, name: 'Taiping Lake Gardens', lat: 4.8520, lng: 100.7350, image: '/assets/images/attractions/attraction-2.jpg', description: 'Beautiful colonial-era lake gardens', distance: '2.5 km' },
-    { id: 3, name: 'Bukit Larut', lat: 4.8650, lng: 100.7900, image: '/assets/images/attractions/attraction-3.jpg', description: 'Hill station with cool climate', distance: '6.5 km' },
-    { id: 4, name: 'Taiping War Cemetery', lat: 4.8480, lng: 100.7320, image: '/assets/images/attractions/attraction-4.jpg', description: 'Historic WWII memorial', distance: '2.8 km' },
-    { id: 5, name: 'Perak Museum', lat: 4.8510, lng: 100.7380, image: '/assets/images/attractions/attraction-5.jpg', description: 'Oldest museum in Malaysia', distance: '2.0 km' }
+    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: '/assets/images/attractions/zoo-taiping.png', description: 'Malaysia\'s first night safari zoo', distance: '3.0 km' },
+    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: '/assets/images/attractions/perak-museum.png', description: 'Oldest museum in Malaysia', distance: '2.1 km' },
+    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: '/assets/images/attractions/clock-tower.png', description: 'Historic Taiping landmark', distance: '2.3 km' },
+    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: '/assets/images/attractions/dataran-warisan.png', description: 'Heritage Square of Taiping', distance: '2.3 km' }
   ],
   photoSpot: [
     { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: '/assets/images/attractions/photo-1.jpg', description: 'Iconic tree-lined path', distance: '2.3 km' },
