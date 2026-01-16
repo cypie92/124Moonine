@@ -100,26 +100,26 @@ function showCategory(category) {
   // Add markers for category
   const categoryAttractions = attractions[category] || [];
   categoryAttractions.forEach(attraction => {
-    // Create custom image marker
+    // Create custom image marker - larger size (90x90)
     const customIcon = L.divIcon({
       className: 'attraction-marker',
-      html: `<div style="width: 60px; height: 60px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 3px solid white; background: #f0f0f0;">
+      html: `<div style="width: 90px; height: 90px; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.35); border: 4px solid white; background: #f0f0f0;">
         <img src="${attraction.image}" alt="${attraction.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#376d64;color:white;\\'><span class=\\'material-symbols-outlined\\'>place</span></div>'">
       </div>`,
-      iconSize: [60, 60],
-      iconAnchor: [30, 30]
+      iconSize: [90, 90],
+      iconAnchor: [45, 45]
     });
 
     const marker = L.marker([attraction.lat, attraction.lng], { icon: customIcon })
       .addTo(map)
       .bindPopup(`
-        <div style="text-align: center; padding: 8px; min-width: 150px;">
-          <img src="${attraction.image}" alt="${attraction.name}" style="width: 120px; height: 80px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;" onerror="this.style.display='none'">
-          <h4 style="font-weight: bold; margin: 0 0 4px 0; color: #131615;">${attraction.name}</h4>
-          <p style="font-size: 12px; color: #5C6664; margin: 0 0 4px 0;">${attraction.description}</p>
-          <p style="font-size: 11px; color: #376d64; font-weight: 600; margin: 0;">${attraction.distance} from homestay</p>
+        <div style="text-align: center; padding: 12px; width: 220px;">
+          <img src="${attraction.image}" alt="${attraction.name}" style="width: 200px; height: 140px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; display: block;" onerror="this.style.display='none'">
+          <h4 style="font-weight: bold; margin: 0 0 6px 0; color: #131615; font-size: 15px;">${attraction.name}</h4>
+          <p style="font-size: 13px; color: #5C6664; margin: 0 0 6px 0; line-height: 1.4;">${attraction.description}</p>
+          <p style="font-size: 12px; color: #376d64; font-weight: 600; margin: 0;">${attraction.distance} from homestay</p>
         </div>
-      `);
+      `, { maxWidth: 250 });
 
     markers.push(marker);
   });

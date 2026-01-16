@@ -16,3 +16,25 @@
   background: transparent;
   border: none;
 }
+
+/* Leaflet popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+}
+
+.leaflet-popup-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
