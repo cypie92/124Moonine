@@ -5,9 +5,11 @@
 
 // Homestay coordinates
 const HOMESTAY_LOCATION = {
-  lat: 4.8688777,
-  lng: 100.7253366,
-  name: '124 By Moonine Homes'
+  lat: 4.8688581,
+  lng: 100.7278357,
+  name: '124 By Moonine Homes',
+  image: '/assets/images/homestay-marker.png',
+  mapUrl: 'https://maps.app.goo.gl/kdjP9qjCCXb7RqBb7'
 };
 
 // Attraction data organized by category
@@ -56,19 +58,25 @@ function initHomeMap(containerId) {
     maxZoom: 20
   }).addTo(map);
 
-  // Add homestay marker (special style)
+  // Add homestay marker with custom image
   const homestayIcon = L.divIcon({
     className: 'homestay-marker',
-    html: `<div style="background-color: #376d64; color: white; padding: 8px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
-      <span class="material-symbols-outlined" style="font-size: 20px;">cottage</span>
-    </div>`,
-    iconSize: [40, 40],
-    iconAnchor: [20, 20]
+    html: `<img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">`,
+    iconSize: [100, 100],
+    iconAnchor: [50, 50]
   });
 
   L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], { icon: homestayIcon })
     .addTo(map)
-    .bindPopup(`<strong>${HOMESTAY_LOCATION.name}</strong><br>Your homestay`);
+    .bindPopup(`
+      <div style="text-align: center; padding: 12px; width: 180px;">
+        <h4 style="font-weight: bold; margin: 0 0 8px 0; color: #131615; font-size: 16px;">${HOMESTAY_LOCATION.name}</h4>
+        <p style="font-size: 13px; color: #5C6664; margin: 0 0 12px 0;">Your homestay</p>
+        <a href="${HOMESTAY_LOCATION.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+          <span style="font-size: 16px;">&#x2197;</span> Directions
+        </a>
+      </div>
+    `, { maxWidth: 200, className: 'custom-popup' });
 
   // Load initial category
   showCategory('food');
@@ -152,19 +160,24 @@ function initAttractionsPageMap(containerId) {
     maxZoom: 20
   }).addTo(attractionsMap);
 
-  // Add homestay marker
+  // Add homestay marker with custom image
   const homestayIcon = L.divIcon({
     className: 'homestay-marker',
-    html: `<div style="background-color: #376d64; color: white; padding: 8px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
-      <span class="material-symbols-outlined" style="font-size: 20px;">cottage</span>
-    </div>`,
-    iconSize: [40, 40],
-    iconAnchor: [20, 20]
+    html: `<img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 80px; height: 80px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">`,
+    iconSize: [80, 80],
+    iconAnchor: [40, 40]
   });
 
   L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], { icon: homestayIcon })
     .addTo(attractionsMap)
-    .bindPopup(`<strong>${HOMESTAY_LOCATION.name}</strong>`);
+    .bindPopup(`
+      <div style="text-align: center; padding: 12px;">
+        <h4 style="font-weight: bold; margin: 0 0 8px 0; color: #131615;">${HOMESTAY_LOCATION.name}</h4>
+        <a href="${HOMESTAY_LOCATION.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+          <span style="font-size: 16px;">&#x2197;</span> Directions
+        </a>
+      </div>
+    `, { className: 'custom-popup' });
 
   // Category colors
   const categoryColors = {
@@ -211,9 +224,24 @@ function initContactMap(containerId) {
     maxZoom: 20
   }).addTo(contactMap);
 
-  L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng])
+  // Add homestay marker with custom image
+  const contactHomestayIcon = L.divIcon({
+    className: 'homestay-marker',
+    html: `<img src="${HOMESTAY_LOCATION.image}" alt="${HOMESTAY_LOCATION.name}" style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));">`,
+    iconSize: [100, 100],
+    iconAnchor: [50, 50]
+  });
+
+  L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], { icon: contactHomestayIcon })
     .addTo(contactMap)
-    .bindPopup(`<strong>${HOMESTAY_LOCATION.name}</strong>`)
+    .bindPopup(`
+      <div style="text-align: center; padding: 12px;">
+        <h4 style="font-weight: bold; margin: 0 0 8px 0; color: #131615;">${HOMESTAY_LOCATION.name}</h4>
+        <a href="${HOMESTAY_LOCATION.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+          <span style="font-size: 16px;">&#x2197;</span> Directions
+        </a>
+      </div>
+    `, { className: 'custom-popup' })
     .openPopup();
 }
 
