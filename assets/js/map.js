@@ -100,14 +100,12 @@ function showCategory(category) {
   // Add markers for category
   const categoryAttractions = attractions[category] || [];
   categoryAttractions.forEach(attraction => {
-    // Create custom image marker - larger size (90x90)
+    // Create custom image marker - just the image
     const customIcon = L.divIcon({
       className: 'attraction-marker',
-      html: `<div style="width: 90px; height: 90px; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.35); border: 4px solid white; background: #f0f0f0;">
-        <img src="${attraction.image}" alt="${attraction.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#376d64;color:white;\\'><span class=\\'material-symbols-outlined\\'>place</span></div>'">
-      </div>`,
-      iconSize: [90, 90],
-      iconAnchor: [45, 45]
+      html: `<img src="${attraction.image}" alt="${attraction.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" onerror="this.outerHTML='<div style=\\'width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#376d64;color:white;box-shadow:0 4px 12px rgba(0,0,0,0.3);\\'><span class=\\'material-symbols-outlined\\'>place</span></div>'">`,
+      iconSize: [80, 80],
+      iconAnchor: [40, 40]
     });
 
     const marker = L.marker([attraction.lat, attraction.lng], { icon: customIcon })
