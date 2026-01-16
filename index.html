@@ -1,528 +1,639 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>124 By Moonine Homes</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="./assets/css/styles.css" />
-<script>
-    tailwind.config = {
-        darkMode: "class",
-        theme: {
-            extend: {
-                colors: {
-                    "primary": "#376d64",
-                    "primary-dark": "#2a524b",
-                    "secondary": "#D9886E",
-                    "background-light": "#fbfaf8",
-                    "background-card": "#F6F0EB",
-                    "background-dark": "#161c1b",
-                    "text-main": "#131615",
-                    "text-muted": "#5C6664",
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>124 By Moonine Homes</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#376d64",
+                        "primary-dark": "#2a524b",
+                        "secondary": "#D9886E",
+                        "background-light": "#fbfaf8",
+                        "background-card": "#F6F0EB",
+                        "background-dark": "#161c1b",
+                        "text-main": "#131615",
+                        "text-muted": "#5C6664",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px" },
+                    boxShadow: {
+                        "soft": "0 20px 40px -15px rgba(55, 109, 100, 0.1)",
+                        "glow": "0 0 40px -10px rgba(217, 136, 110, 0.15)",
+                    }
                 },
-                fontFamily: {
-                    "display": ["Manrope", "sans-serif"],
-                    "sans": ["Manrope", "sans-serif"],
-                },
-                borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
-                boxShadow: {
-                    "soft": "0 20px 40px -15px rgba(55, 109, 100, 0.1)",
-                    "glow": "0 0 40px -10px rgba(217, 136, 110, 0.15)",
-                }
             },
-        },
-    }
-</script>
-<style>html {
-        scroll-behavior: smooth;
-    }
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .leaflet-div-icon {
-        background: transparent;
-        border: none;
-    }
-</style>
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .leaflet-div-icon {
+            background: transparent;
+            border: none;
+        }
+    </style>
 </head>
+
 <body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased overflow-x-hidden">
 
-<!-- Shared Header -->
-<div id="header" class="min-h-[80px]"></div>
+    <!-- Shared Header -->
+    <div id="header" class="min-h-[80px]"></div>
 
-<!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4">
-<div class="absolute inset-0 z-0">
-<div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background-light dark:to-background-dark z-10"></div>
-<div class="w-full h-full bg-cover bg-center" data-alt="Modern bright living room interior with mid-century furniture and large windows" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDl_jm2PmEfFjT_HoLQs2Kum7NWRSKEomHAffi3fLW0pJp8kWHk9ssUJp9DQnxgQbkI4VcYcz1jUdT0l-pducEXO_m1KG5CUzJhrtrJ-PxBcEApzIrtiAxutmAR1nESD6d6JEgi0IIMiOA9ADIu7yFxwN7xJUiSPl9LYKAVQYX2CxZN5jZMVOpSv08w6yEj8ckkGTbc-KM2eueni8tZvQFM8llZoeThAp4WlAdadJ76FexoZd65kvKaU0QiEf0rf6b-wffxIVfx2wU');"></div>
-</div>
-<div class="relative z-20 max-w-4xl w-full mx-auto text-center">
-<div class="bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-glow mx-4 border border-white/20">
-<span class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
-            Guest Favorite · Top 10%
-        </span>
-<h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-main dark:text-white leading-[1.1] tracking-tight mb-6">
-            A Sanctuary of <br/><span class="text-primary italic font-serif">Calm &amp; Comfort</span>
-</h1>
-<p class="text-lg md:text-xl text-text-muted dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium">
-            4900 sqft of space for up to 14 guests · 4 Bedrooms · 6 Beds · 3 Baths · Perfect for parties, events &amp; gatherings in Taiping.
-</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-<a href="https://www.airbnb.com/rooms/1015848496504857562?source_impression_id=p3_1768552046_P3xJimP1sqwbeRRC&modal=PHOTO_TOUR_SCROLLABLE" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2">
-<span>View Gallery</span>
-<span class="material-symbols-outlined text-sm">photo_library</span>
-</a>
-</div>
-</div>
-</div>
-</section>
-
-<!-- About Section -->
-<section class="py-24 relative overflow-hidden" id="the-space">
-<div class="absolute top-0 right-0 w-1/3 h-full bg-background-card dark:bg-white/5 -z-10 rounded-l-[4rem]"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="flex flex-col gap-6 order-2 lg:order-1">
-<div class="flex items-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase">
-<span class="w-8 h-[2px] bg-secondary"></span>
-                About Us
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4">
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background-light dark:to-background-dark z-10">
             </div>
-<h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">
-                Designed for <br/>serenity.
-</h2>
-<p class="text-lg text-text-muted dark:text-gray-400 leading-relaxed">
-                Experience our beautifully renovated 4900 sqft single-storey Semi-D in Taman Taiping. Hosted by <strong class="text-text-main dark:text-white">Kelvin & YinYin</strong>, Superhosts with 8 years of experience and a 5.0 rating from 42 reviews. Strategically located near restaurants, cafes, malls & attractions - everything is just minutes away!
-</p>
-<div class="grid grid-cols-2 gap-6 mt-6">
-<div class="flex items-start gap-3">
-<div class="p-2 rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">wifi</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white">High-Speed Wifi</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">300 Mbps fiber optic</p>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="p-2 rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">local_parking</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white">Easy Parking</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">1 inside, 3+ outside</p>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="p-2 rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">schedule</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white">12 PM Checkout</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">More time to relax!</p>
-</div>
-</div>
-<div class="flex items-start gap-3">
-<div class="p-2 rounded-lg bg-primary/10 text-primary">
-<span class="material-symbols-outlined">family_restroom</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white">Family-Friendly</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">Ground floor rooms</p>
-</div>
-</div>
-</div>
-<div class="mt-8">
-<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="./pages/about.html">
-                    Read more about the space <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 order-1 lg:order-2">
-<div class="flex flex-col gap-4 mt-12">
-<div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist cozy bedroom with white linens and wooden accents" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtqbIW1Fi3-W91Qx-YtQ2VS1EtAOWSjM4-glQO-mpERpU6OpiAhApx27-chOP9bzyPJ4qsgUTznz2Lyczq50T9akP0012dlHnhIgNhorQoMJXG3H_MZft_tx6H62SaYb8JDkZyTYr1j31UDRtIR10vZyFoJd5Ux-XE4X5eYf6TEIPoTNxIXEULYNBqzHpB2b45FXP1R6_Bbh841jJpdnwK6Wbx-POeUfZX2UkRkgNh4o7oxYpDRj0iHPBhy9Av2S-8hLTzQQYhbJg');"></div>
-</div>
-</div>
-<div class="flex flex-col gap-4">
-<div class="w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden group">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Modern kitchen detail with teal cabinets and marble countertop" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqVOUuuvjydMtybJeAKGMR_ST0Sb1NG2K2azEj7Lm_9oXpINgjgPRdO_4Xv5gZa8-1reS3rSqUhXO03zf76k4OYHweVAa1K5Nz3auITd4gQjYTUCGi2g758y-5hpMS3AGrdeH1DWEhqO9lrGmt6Ca_5PvntgsSnMI4qRWWaoaLmopk1nF23-MneudXteTsnjEacr1pf8IbGFL1xi6HAMP_vgb5PQGefpUWua-t-PwjWdb55oKMTOHltJClYdz8gUyXa2ppvarvUW0');"></div>
-</div>
-<div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
-<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Comfortable armchair in a sunlit corner of the room" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-2EDxgsx_gxahyV8RMO3SQ5pImRZTcO6SvFzD-QYtipwIfpcBNsB-MyRAgM5clBUa0pCiq_YnlWbGJyOB0oAGClY5SND_FtAQAXdIGHiAEiWxqJeQqo9oG78j-GAgwFQ6faFZeSt87NwX4VxanfIMfMQI_f7yZqyBZCPhi0H7tPUHtg-BrSJuGTmeUKlbC9kzCxzlXbgQTYE1HDbny3ruzW6iuC14aCV5mLURN-AYUZVNRPVBqqVsnvA-FWC8f_CtN8-AM3bCz1w');"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Facilities Section -->
-<section class="py-24 bg-background-light dark:bg-background-dark relative" id="facilities">
-<div class="absolute top-1/2 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="text-center max-w-3xl mx-auto mb-20">
-<div class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-<span class="w-8 h-[2px] bg-secondary"></span>
-            Experiences
-            <span class="w-8 h-[2px] bg-secondary"></span>
-</div>
-<h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">Facilities &amp; Experiences</h2>
-<p class="text-lg text-text-muted dark:text-gray-400">
-            Beyond a place to sleep, 124 By Moonine Homes offers curated spaces for connection, celebration, and play.
-</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
-<div class="relative group rounded-3xl overflow-hidden shadow-soft">
-<div class="aspect-[4/3] w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('./assets/images/gallery/outdoor_bbq.jpg');"></div>
-</div>
-<div>
-<h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Outdoor BBQ Area</h3>
-<p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
-                Gather your friends and family for a delightful culinary experience under the stars. Our fully equipped BBQ station creates the perfect backdrop for social gatherings.
-</p>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-2xl">outdoor_grill</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white mb-1">Social Gatherings</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">Ample seating and premium grill equipment provided.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-2xl">wb_twilight</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white mb-1">Evening Ambiance</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">Perfectly lit for late-night conversations.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
-<div class="order-2 lg:order-1">
-<h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Private Karaoke Room</h3>
-<p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
-                Unleash your inner star in our soundproofed entertainment lounge. Designed for endless fun, this space allows you to sing your heart out without worry.
-</p>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-2xl">mic_external_on</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white mb-1">Indoor Entertainment</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">High-end sound system and large display screen.</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined text-2xl">volume_up</span>
-</div>
-<div>
-<h4 class="font-bold text-text-main dark:text-white mb-1">Soundproof Luxury</h4>
-<p class="text-sm text-text-muted dark:text-gray-500">Party late into the night without disturbance.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="relative group rounded-3xl overflow-hidden shadow-soft order-1 lg:order-2">
-<div class="aspect-[4/3] w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('./assets/images/gallery/private_karaoke_room.jpg');"></div>
-</div>
-</div>
-<div class="bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden">
-<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-<div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-<div class="w-full h-full bg-cover bg-center" style="background-image: url('./assets/images/gallery/the_great_lawn.jpg');"></div>
-</div>
-<div>
-<span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
-                    Signature Feature
+            <div class="w-full h-full bg-cover bg-center"
+                data-alt="Spacious modern living and dining area with high ceilings"
+                style="background-image: url('./assets/images/hero/landing_banner.jpg');"></div>
+        </div>
+        <div class="relative z-20 max-w-4xl w-full mx-auto text-center">
+            <div
+                class="bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-glow mx-4 border border-white/20">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
+                    Guest Favorite · Top 10%
                 </span>
-<h3 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-6">The Great Lawn</h3>
-<p class="text-text-muted dark:text-gray-400 mb-8 text-lg">
-                    A sprawling expanse of green designed for total versatility. From intimate moments to grand celebrations, The Great Lawn adapts to your imagination.
-</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary">attractions</span>
-<span class="font-bold text-text-main dark:text-white text-sm">Inflatable Bouncy Castle</span>
-</div>
-<div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary">sports_esports</span>
-<span class="font-bold text-text-main dark:text-white text-sm">Mahjong &amp; Game Console</span>
-</div>
-<div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary">pedal_bike</span>
-<span class="font-bold text-text-main dark:text-white text-sm">Bicycles Available</span>
-</div>
-<div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary">tv</span>
-<span class="font-bold text-text-main dark:text-white text-sm">TV Box Entertainment</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Interactive Map Section -->
-<section class="py-24 bg-background-card/50 dark:bg-white/5" id="attractions">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-3xl mx-auto mb-12">
-<div class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-<span class="w-8 h-[2px] bg-secondary"></span>
-        Nearby
-        <span class="w-8 h-[2px] bg-secondary"></span>
-</div>
-<h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">Explore the Neighborhood</h2>
-<p class="text-text-muted dark:text-gray-400">Discover amazing places just minutes from your doorstep in Taiping.</p>
-</div>
-
-<!-- Category Tabs -->
-<div class="flex flex-wrap justify-center gap-3 mb-8">
-<button class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft" data-category="food" onclick="showCategory('food')">
-<span class="material-symbols-outlined align-middle mr-1">restaurant</span> Food
-</button>
-<button class="map-tab bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft" data-category="attraction" onclick="showCategory('attraction')">
-<span class="material-symbols-outlined align-middle mr-1">photo_camera</span> Attractions
-</button>
-<button class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft" data-category="photoSpot" onclick="showCategory('photoSpot')">
-<span class="material-symbols-outlined align-middle mr-1">landscape</span> Photo Spots
-</button>
-</div>
-
-<!-- Map Container -->
-<div id="home-map" class="w-full h-[500px] rounded-2xl overflow-hidden shadow-soft"></div>
-
-<!-- Explore More Button -->
-<div class="text-center mt-8">
-<a href="./pages/attractions.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-0.5 shadow-soft">
-  Explore All Attractions
-  <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-
-<!-- Testimonial Section -->
-<section class="py-24 bg-background-light dark:bg-background-dark" id="reviews">
-<div class="max-w-7xl mx-auto px-4 sm:px-6">
-  <div class="text-center mb-12">
-    <div class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-      <span class="w-8 h-[2px] bg-secondary"></span>
-      Reviews
-      <span class="w-8 h-[2px] bg-secondary"></span>
-    </div>
-    <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">What Our Guests Say</h2>
-    <div class="flex items-center justify-center gap-2 text-text-muted">
-      <span class="text-yellow-500 text-xl">★★★★★</span>
-      <span class="font-semibold">5.0</span>
-      <span>from 42 reviews on Airbnb</span>
-    </div>
-  </div>
-
-  <!-- Review Carousel -->
-  <div class="relative">
-    <!-- Carousel Container -->
-    <div class="overflow-hidden" id="review-carousel">
-      <div class="flex transition-transform duration-300 ease-out" id="review-track">
-        <!-- Review 1 - Parveen -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-          <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-            <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
-            <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
-              "The house was huge and was like a home from Pinterest. Kelvin was so helpful and responsive. The house was clean, beds were so comfortable. The house had everything in it that going out seemed boring. I will definitely come back to Taiping just to stay here!"
-            </blockquote>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">P</div>
-              <div>
-                <cite class="not-italic font-bold text-text-main dark:text-white block text-sm">Parveen</cite>
-                <span class="text-xs text-text-muted">June 2025</span>
-              </div>
+                <h1
+                    class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-main dark:text-white leading-[1.1] tracking-tight mb-6">
+                    A Sanctuary of <br /><span class="text-primary italic font-serif">Calm &amp; Comfort</span>
+                </h1>
+                <p class="text-lg md:text-xl text-text-muted dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium">
+                    4900 sqft of space for up to 14 guests · 4 Bedrooms · 6 Beds · 3 Baths · Perfect for parties, events
+                    &amp; gatherings in Taiping.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://www.airbnb.com/rooms/1015848496504857562?source_impression_id=p3_1768552046_P3xJimP1sqwbeRRC&modal=PHOTO_TOUR_SCROLLABLE"
+                        target="_blank" rel="noopener noreferrer"
+                        class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2">
+                        <span>View Gallery</span>
+                        <span class="material-symbols-outlined text-sm">photo_library</span>
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Review 2 - Siau Hooi -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-          <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-            <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
-            <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
-              "Staying at this Airbnb was an absolute delight! Kelvin was incredibly welcoming and accommodating. The space was not only clean and cozy but also beautifully decorated. I highly recommend this Airbnb to anyone looking for a memorable stay!"
-            </blockquote>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">S</div>
-              <div>
-                <cite class="not-italic font-bold text-text-main dark:text-white block text-sm">Siau Hooi</cite>
-                <span class="text-xs text-text-muted">April 2024</span>
-              </div>
+    <!-- About Section -->
+    <section class="py-24 relative overflow-hidden" id="the-space">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-background-card dark:bg-white/5 -z-10 rounded-l-[4rem]">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="flex flex-col gap-6 order-2 lg:order-1">
+                    <div class="flex items-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase">
+                        <span class="w-8 h-[2px] bg-secondary"></span>
+                        About Us
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">
+                        Designed for <br />serenity.
+                    </h2>
+                    <p class="text-lg text-text-muted dark:text-gray-400 leading-relaxed">
+                        Experience our beautifully renovated 4900 sqft single-storey Semi-D in Taman Taiping. Hosted by
+                        <strong class="text-text-main dark:text-white">Kelvin & YinYin</strong>, Superhosts with 8 years
+                        of experience and a 5.0 rating from 42 reviews. Strategically located near restaurants, cafes,
+                        malls & attractions - everything is just minutes away!
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-6">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">wifi</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white">High-Speed Wifi</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">300 Mbps fiber optic</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">local_parking</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white">Easy Parking</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">1 inside, 3+ outside</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white">12 PM Checkout</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">More time to relax!</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined">family_restroom</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white">Family-Friendly</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">Ground floor rooms</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all"
+                            href="./pages/about.html">
+                            Read more about the space <span
+                                class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 order-1 lg:order-2">
+                    <div class="flex flex-col gap-4 mt-12">
+                        <div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
+                            <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                data-alt="Minimalist cozy bedroom with white linens and wooden accents"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtqbIW1Fi3-W91Qx-YtQ2VS1EtAOWSjM4-glQO-mpERpU6OpiAhApx27-chOP9bzyPJ4qsgUTznz2Lyczq50T9akP0012dlHnhIgNhorQoMJXG3H_MZft_tx6H62SaYb8JDkZyTYr1j31UDRtIR10vZyFoJd5Ux-XE4X5eYf6TEIPoTNxIXEULYNBqzHpB2b45FXP1R6_Bbh841jJpdnwK6Wbx-POeUfZX2UkRkgNh4o7oxYpDRj0iHPBhy9Av2S-8hLTzQQYhbJg');">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden group">
+                            <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                data-alt="Modern kitchen detail with teal cabinets and marble countertop"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqVOUuuvjydMtybJeAKGMR_ST0Sb1NG2K2azEj7Lm_9oXpINgjgPRdO_4Xv5gZa8-1reS3rSqUhXO03zf76k4OYHweVAa1K5Nz3auITd4gQjYTUCGi2g758y-5hpMS3AGrdeH1DWEhqO9lrGmt6Ca_5PvntgsSnMI4qRWWaoaLmopk1nF23-MneudXteTsnjEacr1pf8IbGFL1xi6HAMP_vgb5PQGefpUWua-t-PwjWdb55oKMTOHltJClYdz8gUyXa2ppvarvUW0');">
+                            </div>
+                        </div>
+                        <div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
+                            <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                                data-alt="Comfortable armchair in a sunlit corner of the room"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-2EDxgsx_gxahyV8RMO3SQ5pImRZTcO6SvFzD-QYtipwIfpcBNsB-MyRAgM5clBUa0pCiq_YnlWbGJyOB0oAGClY5SND_FtAQAXdIGHiAEiWxqJeQqo9oG78j-GAgwFQ6faFZeSt87NwX4VxanfIMfMQI_f7yZqyBZCPhi0H7tPUHtg-BrSJuGTmeUKlbC9kzCxzlXbgQTYE1HDbny3ruzW6iuC14aCV5mLURN-AYUZVNRPVBqqVsnvA-FWC8f_CtN8-AM3bCz1w');">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Review 3 - Geraldine -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-          <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-            <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
-            <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
-              "Perfect accommodation for a big family. Very homely and pleasant place to stay in. Big yard for children to run around at, fully equipped kitchen, 3 mins drive to supermarket. Will definitely go back and stay again."
-            </blockquote>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">G</div>
-              <div>
-                <cite class="not-italic font-bold text-text-main dark:text-white block text-sm">Geraldine</cite>
-                <span class="text-xs text-text-muted">December 2024</span>
-              </div>
+    <!-- Facilities Section -->
+    <section class="py-24 bg-background-light dark:bg-background-dark relative" id="facilities">
+        <div
+            class="absolute top-1/2 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div
+                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    Experiences
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">Facilities &amp;
+                    Experiences</h2>
+                <p class="text-lg text-text-muted dark:text-gray-400">
+                    Beyond a place to sleep, 124 By Moonine Homes offers curated spaces for connection, celebration, and
+                    play.
+                </p>
             </div>
-          </div>
-        </div>
-
-        <!-- Review 4 - Catherine -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-          <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-            <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
-            <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
-              "It was a great stay, love the cozy space with a beautiful garden and facilities. It is very kids friendly and thoughtful with baby chair and baby bathtub. Kelvin is a great host. My family and I look forward to visit again."
-            </blockquote>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">C</div>
-              <div>
-                <cite class="not-italic font-bold text-text-main dark:text-white block text-sm">Catherine</cite>
-                <span class="text-xs text-text-muted">November 2024</span>
-              </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
+                <div class="relative group rounded-3xl overflow-hidden shadow-soft">
+                    <div class="aspect-[4/3] w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('./assets/images/gallery/outdoor_bbq.jpg');"></div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Outdoor BBQ Area</h3>
+                    <p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
+                        Gather your friends and family for a delightful culinary experience under the stars. Our fully
+                        equipped BBQ station creates the perfect backdrop for social gatherings.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-2xl">outdoor_grill</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-1">Social Gatherings</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">Ample seating and premium grill
+                                    equipment provided.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-2xl">wb_twilight</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-1">Evening Ambiance</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">Perfectly lit for late-night
+                                    conversations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Review 5 - Sau -->
-        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-          <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-            <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
-            <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
-              "Overall stay is very satisfying as felt homey. Cleanliness is superb. Many facilities as shown - Mahjong, Karaoke, games etc made our stays more cheerful. The inflatable castle made the kids so excited everyday! Very responsive host."
-            </blockquote>
-            <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
-              <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">S</div>
-              <div>
-                <cite class="not-italic font-bold text-text-main dark:text-white block text-sm">Sau</cite>
-                <span class="text-xs text-text-muted">January 2026</span>
-              </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
+                <div class="order-2 lg:order-1">
+                    <h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Private Karaoke Room</h3>
+                    <p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
+                        Unleash your inner star in our soundproofed entertainment lounge. Designed for endless fun, this
+                        space allows you to sing your heart out without worry.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-2xl">mic_external_on</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-1">Indoor Entertainment</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">High-end sound system and large
+                                    display screen.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-2xl">volume_up</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-text-main dark:text-white mb-1">Soundproof Luxury</h4>
+                                <p class="text-sm text-text-muted dark:text-gray-500">Party late into the night without
+                                    disturbance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group rounded-3xl overflow-hidden shadow-soft order-1 lg:order-2">
+                    <div class="aspect-[4/3] w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                        style="background-image: url('./assets/images/gallery/private_karaoke_room.jpg');"></div>
+                </div>
             </div>
-          </div>
+            <div
+                class="bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3">
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
+                        <div class="w-full h-full bg-cover bg-center"
+                            style="background-image: url('./assets/images/gallery/the_great_lawn.jpg');"></div>
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
+                            Signature Feature
+                        </span>
+                        <h3 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-6">The Great Lawn
+                        </h3>
+                        <p class="text-text-muted dark:text-gray-400 mb-8 text-lg">
+                            A sprawling expanse of green designed for total versatility. From intimate moments to grand
+                            celebrations, The Great Lawn adapts to your imagination.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div
+                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary">attractions</span>
+                                <span class="font-bold text-text-main dark:text-white text-sm">Inflatable Bouncy
+                                    Castle</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary">sports_esports</span>
+                                <span class="font-bold text-text-main dark:text-white text-sm">Mahjong &amp; Game
+                                    Console</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary">pedal_bike</span>
+                                <span class="font-bold text-text-main dark:text-white text-sm">Bicycles Available</span>
+                            </div>
+                            <div
+                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary">tv</span>
+                                <span class="font-bold text-text-main dark:text-white text-sm">TV Box
+                                    Entertainment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Navigation Buttons -->
-    <button id="review-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 disabled:opacity-30 disabled:cursor-not-allowed">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </button>
-    <button id="review-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 disabled:opacity-30 disabled:cursor-not-allowed">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </button>
-  </div>
+    <!-- Interactive Map Section -->
+    <section class="py-24 bg-background-card/50 dark:bg-white/5" id="attractions">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div
+                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    Nearby
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">Explore the Neighborhood
+                </h2>
+                <p class="text-text-muted dark:text-gray-400">Discover amazing places just minutes from your doorstep in
+                    Taiping.</p>
+            </div>
 
-  <!-- View All Reviews Link -->
-  <div class="text-center mt-10">
-    <a href="https://www.airbnb.com/rooms/1015848496504857562/reviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-      View all 42 reviews on Airbnb
-      <span class="material-symbols-outlined text-sm">open_in_new</span>
-    </a>
-  </div>
-</div>
-</section>
+            <!-- Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button
+                    class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
+                    data-category="food" onclick="showCategory('food')">
+                    <span class="material-symbols-outlined align-middle mr-1">restaurant</span> Food
+                </button>
+                <button
+                    class="map-tab bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft"
+                    data-category="attraction" onclick="showCategory('attraction')">
+                    <span class="material-symbols-outlined align-middle mr-1">photo_camera</span> Attractions
+                </button>
+                <button
+                    class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
+                    data-category="photoSpot" onclick="showCategory('photoSpot')">
+                    <span class="material-symbols-outlined align-middle mr-1">landscape</span> Photo Spots
+                </button>
+            </div>
 
-<!-- CTA Section -->
-<section class="py-20 bg-primary text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
-<div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-<h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Ready for your escape?</h2>
-<p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes and experience the perfect blend of comfort and style in Taiping.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="https://www.airbnb.com/rooms/1015848496504857562" target="_blank" rel="noopener noreferrer" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
-            Book Now
-</a>
-<a href="./pages/contact.html" class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
-            Contact Host
-</a>
-</div>
-</div>
-</section>
+            <!-- Map Container -->
+            <div id="home-map" class="w-full h-[500px] rounded-2xl overflow-hidden shadow-soft"></div>
 
-<!-- Shared Footer -->
-<div id="footer"></div>
+            <!-- Explore More Button -->
+            <div class="text-center mt-8">
+                <a href="./pages/attractions.html"
+                    class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-0.5 shadow-soft">
+                    Explore All Attractions
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="./assets/js/components.js"></script>
-<script src="./assets/js/map.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize map after a short delay to ensure DOM is ready
-  setTimeout(() => {
-    if (typeof initHomeMap === 'function') {
-      initHomeMap('home-map');
-    }
-  }, 100);
+    <!-- Testimonial Section -->
+    <section class="py-24 bg-background-light dark:bg-background-dark" id="reviews">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <div
+                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    Reviews
+                    <span class="w-8 h-[2px] bg-secondary"></span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">What Our Guests Say</h2>
+            </div>
 
-  // Review Carousel
-  const track = document.getElementById('review-track');
-  const prevBtn = document.getElementById('review-prev');
-  const nextBtn = document.getElementById('review-next');
+            <!-- Review Carousel -->
+            <div class="relative">
+                <!-- Carousel Container -->
+                <div class="overflow-hidden" id="review-carousel">
+                    <div class="flex transition-transform duration-300 ease-out" id="review-track">
+                        <!-- Review 1 - Parveen -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                                <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
+                                    "The house was huge and was like a home from Pinterest. Kelvin was so helpful and
+                                    responsive. The house was clean, beds were so comfortable. The house had everything
+                                    in it that going out seemed boring. I will definitely come back to Taiping just to
+                                    stay here!"
+                                </blockquote>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                    <div
+                                        class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">
+                                        P</div>
+                                    <div>
+                                        <cite
+                                            class="not-italic font-bold text-text-main dark:text-white block text-sm">Parveen</cite>
+                                        <span class="text-xs text-text-muted">June 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-  if (track && prevBtn && nextBtn) {
-    let currentIndex = 0;
-    const cards = track.children;
-    const totalCards = cards.length;
+                        <!-- Review 2 - Siau Hooi -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                                <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
+                                    "Staying at this Airbnb was an absolute delight! Kelvin was incredibly welcoming and
+                                    accommodating. The space was not only clean and cozy but also beautifully decorated.
+                                    I highly recommend this Airbnb to anyone looking for a memorable stay!"
+                                </blockquote>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                    <div
+                                        class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">
+                                        S</div>
+                                    <div>
+                                        <cite
+                                            class="not-italic font-bold text-text-main dark:text-white block text-sm">Siau
+                                            Hooi</cite>
+                                        <span class="text-xs text-text-muted">April 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    function getCardsToShow() {
-      if (window.innerWidth >= 1024) return 3; // lg
-      if (window.innerWidth >= 768) return 2;  // md
-      return 1; // mobile
-    }
+                        <!-- Review 3 - Geraldine -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                                <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
+                                    "Perfect accommodation for a big family. Very homely and pleasant place to stay in.
+                                    Big yard for children to run around at, fully equipped kitchen, 3 mins drive to
+                                    supermarket. Will definitely go back and stay again."
+                                </blockquote>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                    <div
+                                        class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">
+                                        G</div>
+                                    <div>
+                                        <cite
+                                            class="not-italic font-bold text-text-main dark:text-white block text-sm">Geraldine</cite>
+                                        <span class="text-xs text-text-muted">December 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    function updateCarousel() {
-      const cardsToShow = getCardsToShow();
-      const maxIndex = Math.max(0, totalCards - cardsToShow);
+                        <!-- Review 4 - Catherine -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                                <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
+                                    "It was a great stay, love the cozy space with a beautiful garden and facilities. It
+                                    is very kids friendly and thoughtful with baby chair and baby bathtub. Kelvin is a
+                                    great host. My family and I look forward to visit again."
+                                </blockquote>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                    <div
+                                        class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">
+                                        C</div>
+                                    <div>
+                                        <cite
+                                            class="not-italic font-bold text-text-main dark:text-white block text-sm">Catherine</cite>
+                                        <span class="text-xs text-text-muted">November 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-      if (currentIndex < 0) currentIndex = 0;
+                        <!-- Review 5 - Sau -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                                <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
+                                    "Overall stay is very satisfying as felt homey. Cleanliness is superb. Many
+                                    facilities as shown - Mahjong, Karaoke, games etc made our stays more cheerful. The
+                                    inflatable castle made the kids so excited everyday! Very responsive host."
+                                </blockquote>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                    <div
+                                        class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold">
+                                        S</div>
+                                    <div>
+                                        <cite
+                                            class="not-italic font-bold text-text-main dark:text-white block text-sm">Sau</cite>
+                                        <span class="text-xs text-text-muted">January 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-      const cardWidth = cards[0].offsetWidth;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                <!-- Navigation Buttons -->
+                <button id="review-prev"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button id="review-next"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors z-10 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
 
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxIndex;
-    }
+            <!-- View All Reviews Link -->
+            <div class="text-center mt-10">
+                <a href="https://www.airbnb.com/rooms/1015848496504857562/reviews" target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                    View all reviews on Airbnb
+                    <span class="material-symbols-outlined text-sm">open_in_new</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    prevBtn.addEventListener('click', () => {
-      currentIndex--;
-      updateCarousel();
-    });
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Ready for your escape?</h2>
+            <p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes
+                and experience the perfect blend of comfort and style in Taiping.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.airbnb.com/rooms/1015848496504857562" target="_blank" rel="noopener noreferrer"
+                    class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
+                    Book Now
+                </a>
+                <a href="./pages/contact.html"
+                    class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+                    Contact Host
+                </a>
+            </div>
+        </div>
+    </section>
 
-    nextBtn.addEventListener('click', () => {
-      currentIndex++;
-      updateCarousel();
-    });
+    <!-- Shared Footer -->
+    <div id="footer"></div>
 
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
-  }
-});
-</script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./assets/js/components.js"></script>
+    <script src="./assets/js/map.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize map after a short delay to ensure DOM is ready
+            setTimeout(() => {
+                if (typeof initHomeMap === 'function') {
+                    initHomeMap('home-map');
+                }
+            }, 100);
 
-</body></html>
+            // Review Carousel
+            const track = document.getElementById('review-track');
+            const prevBtn = document.getElementById('review-prev');
+            const nextBtn = document.getElementById('review-next');
+
+            if (track && prevBtn && nextBtn) {
+                let currentIndex = 0;
+                const cards = track.children;
+                const totalCards = cards.length;
+
+                function getCardsToShow() {
+                    if (window.innerWidth >= 1024) return 3; // lg
+                    if (window.innerWidth >= 768) return 2;  // md
+                    return 1; // mobile
+                }
+
+                function updateCarousel() {
+                    const cardsToShow = getCardsToShow();
+                    const maxIndex = Math.max(0, totalCards - cardsToShow);
+
+                    if (currentIndex > maxIndex) currentIndex = maxIndex;
+                    if (currentIndex < 0) currentIndex = 0;
+
+                    const cardWidth = cards[0].offsetWidth;
+                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+                    prevBtn.disabled = currentIndex === 0;
+                    nextBtn.disabled = currentIndex >= maxIndex;
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    currentIndex--;
+                    updateCarousel();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentIndex++;
+                    updateCarousel();
+                });
+
+                window.addEventListener('resize', updateCarousel);
+                updateCarousel();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
