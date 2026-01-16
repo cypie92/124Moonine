@@ -27,24 +27,25 @@ const HOMESTAY_LOCATION = {
 // Add more attractions as needed - just follow the same format
 const attractions = {
   food: [
-    { id: 1, name: 'Local Restaurant 1', lat: 4.8700, lng: 100.7280, image: `${MAP_BASE}/assets/images/attractions/food-1.jpg`, description: 'Authentic local cuisine', distance: '0.5 km' },
-    { id: 2, name: 'Cafe Taiping', lat: 4.8675, lng: 100.7220, image: `${MAP_BASE}/assets/images/attractions/food-2.jpg`, description: 'Coffee and pastries', distance: '0.4 km' },
-    { id: 3, name: 'Hawker Center', lat: 4.8710, lng: 100.7240, image: `${MAP_BASE}/assets/images/attractions/food-3.jpg`, description: 'Street food paradise', distance: '0.6 km' },
-    { id: 4, name: 'Seafood Restaurant', lat: 4.8660, lng: 100.7270, image: `${MAP_BASE}/assets/images/attractions/food-4.jpg`, description: 'Fresh seafood daily', distance: '0.8 km' },
-    { id: 5, name: 'Dessert House', lat: 4.8695, lng: 100.7230, image: `${MAP_BASE}/assets/images/attractions/food-5.jpg`, description: 'Local desserts & sweets', distance: '0.3 km' }
+    { id: 1, name: 'Larut Matang Hawker Center', lat: 4.8550, lng: 100.7350, image: `${MAP_BASE}/assets/images/attractions/food-1.jpg`, description: 'Famous local hawker center with variety of food', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/LQvQzqJfZPTBqiPG6' },
+    { id: 2, name: 'AEON Mall Taiping', lat: 4.8580, lng: 100.7180, image: `${MAP_BASE}/assets/images/attractions/food-2.jpg`, description: 'Shopping mall with food court & restaurants', distance: '2 min drive', mapUrl: 'https://maps.app.goo.gl/yGvJnwxF4q5RQGFG7' },
+    { id: 3, name: 'Taiping Sentral Mall', lat: 4.8620, lng: 100.7250, image: `${MAP_BASE}/assets/images/attractions/food-3.jpg`, description: 'Local mall with dining options', distance: '2 min drive', mapUrl: 'https://maps.app.goo.gl/Bw8qMaLFEpmxJh6C9' },
+    { id: 4, name: 'Lotus Taiping', lat: 4.8590, lng: 100.7200, image: `${MAP_BASE}/assets/images/attractions/food-4.jpg`, description: 'Hypermarket with food stalls nearby', distance: '2 min drive', mapUrl: 'https://maps.app.goo.gl/C1uyAb3v5YkdMJwH8' },
+    { id: 5, name: 'Ansari Famous Cendol', lat: 4.8545, lng: 100.7395, image: `${MAP_BASE}/assets/images/attractions/food-5.jpg`, description: 'Famous local dessert spot', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/8LkKqnfD3mZyv9YJ6' }
   ],
   attraction: [
-    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/zoo-taiping.png`, description: 'Malaysia\'s first night safari zoo', distance: '3.0 km', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
-    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Oldest museum in Malaysia', distance: '2.1 km', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
-    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic Taiping landmark', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
-    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran-warisan.png`, description: 'Heritage Square of Taiping', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
+    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/zoo-taiping.png`, description: 'Malaysia\'s first night safari zoo', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
+    { id: 2, name: 'Taiping Lake Gardens', lat: 4.8540, lng: 100.7440, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Beautiful lake gardens, oldest in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
+    { id: 3, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Oldest museum in Malaysia', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
+    { id: 4, name: 'KTM Taiping Station', lat: 4.8515, lng: 100.7365, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic railway station', distance: '5 min drive', mapUrl: 'https://maps.app.goo.gl/j5vLjZhH3NWFPyBV7' },
+    { id: 5, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran-warisan.png`, description: 'Heritage Square of Taiping', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
   ],
   photoSpot: [
-    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: `${MAP_BASE}/assets/images/attractions/photo-1.jpg`, description: 'Iconic tree-lined path', distance: '2.3 km' },
-    { id: 2, name: 'Antong Coffee Mill', lat: 4.8720, lng: 100.7150, image: `${MAP_BASE}/assets/images/attractions/photo-2.jpg`, description: 'Traditional coffee factory', distance: '1.5 km' },
-    { id: 3, name: 'Taiping Clock Tower', lat: 4.8505, lng: 100.7340, image: `${MAP_BASE}/assets/images/attractions/photo-3.jpg`, description: 'Historic landmark', distance: '2.2 km' },
-    { id: 4, name: 'Spritzer EcoPark', lat: 4.8400, lng: 100.7100, image: `${MAP_BASE}/assets/images/attractions/photo-4.jpg`, description: 'Natural eco park', distance: '4.0 km' },
-    { id: 5, name: 'Kuala Sepetang', lat: 4.8400, lng: 100.6300, image: `${MAP_BASE}/assets/images/attractions/photo-5.jpg`, description: 'Fishing village & mangroves', distance: '12 km' }
+    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: `${MAP_BASE}/assets/images/attractions/photo-1.jpg`, description: 'Iconic tree-lined path at Lake Gardens', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/HFPKAf5NVs9PWGbm8' },
+    { id: 2, name: 'Taiping Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic British-era landmark', distance: '7 min drive', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
+    { id: 3, name: 'Antong Coffee Mill', lat: 4.8720, lng: 100.7150, image: `${MAP_BASE}/assets/images/attractions/photo-2.jpg`, description: 'Traditional coffee factory since 1933', distance: '5 min drive', mapUrl: 'https://maps.app.goo.gl/QRyqQknPQTgmfGnq9' },
+    { id: 4, name: 'Spritzer EcoPark', lat: 4.8400, lng: 100.7100, image: `${MAP_BASE}/assets/images/attractions/photo-4.jpg`, description: 'Natural eco park with activities', distance: '15 min drive', mapUrl: 'https://maps.app.goo.gl/GKfmW8XSZT6FYLv38' },
+    { id: 5, name: 'Kuala Sepetang', lat: 4.8400, lng: 100.6300, image: `${MAP_BASE}/assets/images/attractions/photo-5.jpg`, description: 'Fishing village & mangrove tours', distance: '20 min drive', mapUrl: 'https://maps.app.goo.gl/yJvM4MxXC6Xjgc3N6' }
   ]
 };
 
