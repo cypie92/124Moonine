@@ -1,0 +1,18 @@
+/* Custom styles extending Tailwind */
+/* Add custom styles here as needed */
+
+/* Ensure map markers display correctly */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+.homestay-marker {
+  background: transparent;
+  border: none;
+}
+
+.attraction-marker {
+  background: transparent;
+  border: none;
+}

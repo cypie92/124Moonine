@@ -6,71 +6,57 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#376d64",
-                        "primary-dark": "#2a524b",
-                        "secondary": "#D9886E",
-                        "background-light": "#fbfaf8",
-                        "background-card": "#F6F0EB",
-                        "background-dark": "#161c1b",
-                        "text-main": "#131615",
-                        "text-muted": "#5C6664",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "sans": ["Manrope", "sans-serif"],
-                    },
-                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
-                    boxShadow: {
-                        "soft": "0 20px 40px -15px rgba(55, 109, 100, 0.1)",
-                        "glow": "0 0 40px -10px rgba(217, 136, 110, 0.15)",
-                    }
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#376d64",
+                    "primary-dark": "#2a524b",
+                    "secondary": "#D9886E",
+                    "background-light": "#fbfaf8",
+                    "background-card": "#F6F0EB",
+                    "background-dark": "#161c1b",
+                    "text-main": "#131615",
+                    "text-muted": "#5C6664",
                 },
+                fontFamily: {
+                    "display": ["Manrope", "sans-serif"],
+                    "sans": ["Manrope", "sans-serif"],
+                },
+                borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                boxShadow: {
+                    "soft": "0 20px 40px -15px rgba(55, 109, 100, 0.1)",
+                    "glow": "0 0 40px -10px rgba(217, 136, 110, 0.15)",
+                }
             },
-        }
-    </script>
+        },
+    }
+</script>
 <style>html {
-            scroll-behavior: smooth;
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+        scroll-behavior: smooth;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .leaflet-div-icon {
+        background: transparent;
+        border: none;
+    }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased overflow-x-hidden">
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-20">
-<div class="flex items-center gap-2 text-primary cursor-pointer">
-<span class="material-symbols-outlined text-3xl">cottage</span>
-<span class="text-xl font-bold tracking-tight text-text-main dark:text-white">124 By Moonine</span>
-</div>
-<nav class="hidden md:flex items-center gap-10">
-<a class="text-sm font-semibold text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#the-space">The Space</a>
-<a class="text-sm font-semibold text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#facilities">Facilities</a>
-<a class="text-sm font-semibold text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#attractions">Attractions</a>
-<a class="text-sm font-semibold text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#contact">Contact</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="hidden md:flex bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-soft transition-all transform hover:-translate-y-0.5">
-                    Book Now
-                </button>
-<button class="md:hidden p-2 text-text-main dark:text-white">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-</div>
-</header>
+
+<!-- Shared Header -->
+<div id="header" class="min-h-[80px]"></div>
+
+<!-- Hero Section -->
 <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background-light dark:to-background-dark z-10"></div>
@@ -79,23 +65,25 @@
 <div class="relative z-20 max-w-4xl w-full mx-auto text-center">
 <div class="bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-glow mx-4 border border-white/20">
 <span class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
-                Luxury Homestay
-            </span>
+            Luxury Homestay
+        </span>
 <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-main dark:text-white leading-[1.1] tracking-tight mb-6">
-                A Sanctuary of <br/><span class="text-primary italic font-serif">Calm &amp; Comfort</span>
+            A Sanctuary of <br/><span class="text-primary italic font-serif">Calm &amp; Comfort</span>
 </h1>
 <p class="text-lg md:text-xl text-text-muted dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium">
-                124 By Moonine Homes: Mid-century comfort meets boutique sophistication in the heart of the city.
-            </p>
+            124 By Moonine Homes: Mid-century comfort meets boutique sophistication in the heart of Taiping.
+</p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-<button class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2">
+<a href="/pages/gallery.html" class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2">
 <span>View Gallery</span>
 <span class="material-symbols-outlined text-sm">photo_library</span>
-</button>
+</a>
 </div>
 </div>
 </div>
 </section>
+
+<!-- About Section -->
 <section class="py-24 relative overflow-hidden" id="the-space">
 <div class="absolute top-0 right-0 w-1/3 h-full bg-background-card dark:bg-white/5 -z-10 rounded-l-[4rem]"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,14 +91,14 @@
 <div class="flex flex-col gap-6 order-2 lg:order-1">
 <div class="flex items-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase">
 <span class="w-8 h-[2px] bg-secondary"></span>
-                    About Us
-                </div>
+                About Us
+            </div>
 <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">
-                    Designed for <br/>serenity.
-                </h2>
+                Designed for <br/>serenity.
+</h2>
 <p class="text-lg text-text-muted dark:text-gray-400 leading-relaxed">
-                    Experience a space designed with a serene, mid-century modern aesthetic. Our home features a warm off-white canvas with deep teal accents, creating a relaxing atmosphere for your getaway. Whether you're here for work or leisure, every corner whispers quiet luxury.
-                </p>
+                Experience a space designed with a serene, mid-century modern aesthetic. Our home features a warm off-white canvas with deep teal accents, creating a relaxing atmosphere for your getaway. Whether you're here for work or leisure, every corner whispers quiet luxury.
+</p>
 <div class="grid grid-cols-2 gap-6 mt-6">
 <div class="flex items-start gap-3">
 <div class="p-2 rounded-lg bg-primary/10 text-primary">
@@ -150,8 +138,8 @@
 </div>
 </div>
 <div class="mt-8">
-<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="#">
-                        Read more about the space <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+<a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all" href="/pages/about.html">
+                    Read more about the space <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
 </a>
 </div>
 </div>
@@ -173,19 +161,21 @@
 </div>
 </div>
 </section>
+
+<!-- Facilities Section -->
 <section class="py-24 bg-background-light dark:bg-background-dark relative" id="facilities">
 <div class="absolute top-1/2 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="text-center max-w-3xl mx-auto mb-20">
 <div class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
 <span class="w-8 h-[2px] bg-secondary"></span>
-                Experiences
-                <span class="w-8 h-[2px] bg-secondary"></span>
+            Experiences
+            <span class="w-8 h-[2px] bg-secondary"></span>
 </div>
 <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">Facilities &amp; Experiences</h2>
 <p class="text-lg text-text-muted dark:text-gray-400">
-                Beyond a place to sleep, 124 By Moonine Homes offers curated spaces for connection, celebration, and play.
-            </p>
+            Beyond a place to sleep, 124 By Moonine Homes offers curated spaces for connection, celebration, and play.
+</p>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
 <div class="relative group rounded-3xl overflow-hidden shadow-soft">
@@ -194,8 +184,8 @@
 <div>
 <h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Outdoor BBQ Area</h3>
 <p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
-                    Gather your friends and family for a delightful culinary experience under the stars. Our fully equipped BBQ station creates the perfect backdrop for social gatherings.
-                </p>
+                Gather your friends and family for a delightful culinary experience under the stars. Our fully equipped BBQ station creates the perfect backdrop for social gatherings.
+</p>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
 <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
@@ -222,8 +212,8 @@
 <div class="order-2 lg:order-1">
 <h3 class="text-3xl font-bold text-text-main dark:text-white mb-6">Private Karaoke Room</h3>
 <p class="text-text-muted dark:text-gray-400 mb-8 leading-relaxed text-lg">
-                    Unleash your inner star in our soundproofed entertainment lounge. Designed for endless fun, this space allows you to sing your heart out without worry.
-                </p>
+                Unleash your inner star in our soundproofed entertainment lounge. Designed for endless fun, this space allows you to sing your heart out without worry.
+</p>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
 <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
@@ -257,12 +247,12 @@
 </div>
 <div>
 <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
-                        Signature Feature
-                    </span>
+                    Signature Feature
+                </span>
 <h3 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-6">The Great Lawn</h3>
 <p class="text-text-muted dark:text-gray-400 mb-8 text-lg">
-                        A sprawling expanse of green designed for total versatility. From intimate moments to grand celebrations, The Great Lawn adapts to your imagination.
-                    </p>
+                    A sprawling expanse of green designed for total versatility. From intimate moments to grand celebrations, The Great Lawn adapts to your imagination.
+</p>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
 <span class="material-symbols-outlined text-primary">camping</span>
@@ -286,101 +276,53 @@
 </div>
 </div>
 </section>
+
+<!-- Interactive Map Section -->
 <section class="py-24 bg-background-card/50 dark:bg-white/5" id="attractions">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-<div class="max-w-2xl">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<div class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+<span class="w-8 h-[2px] bg-secondary"></span>
+        Nearby
+        <span class="w-8 h-[2px] bg-secondary"></span>
+</div>
 <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">Explore the Neighborhood</h2>
-<p class="text-text-muted dark:text-gray-400">Located in the historic district, you are steps away from cultural landmarks, artisanal coffee shops, and lush green parks.</p>
+<p class="text-text-muted dark:text-gray-400">Discover amazing places just minutes from your doorstep in Taiping.</p>
 </div>
-<div class="flex gap-2">
-<button class="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all">
-<span class="material-symbols-outlined">arrow_back</span>
+
+<!-- Category Tabs -->
+<div class="flex flex-wrap justify-center gap-3 mb-8">
+<button class="map-tab bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft" data-category="food" onclick="showCategory('food')">
+<span class="material-symbols-outlined align-middle mr-1">restaurant</span> Food
 </button>
-<button class="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all">
-<span class="material-symbols-outlined">arrow_forward</span>
+<button class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft" data-category="attraction" onclick="showCategory('attraction')">
+<span class="material-symbols-outlined align-middle mr-1">photo_camera</span> Attractions
+</button>
+<button class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft" data-category="photoSpot" onclick="showCategory('photoSpot')">
+<span class="material-symbols-outlined align-middle mr-1">landscape</span> Photo Spots
 </button>
 </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<div class="group bg-white dark:bg-background-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 dark:border-gray-800">
-<div class="relative aspect-[4/3] overflow-hidden">
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 z-10 shadow-sm">
-<span class="material-symbols-outlined text-sm text-primary">directions_walk</span>
-                        0.5 km
-                    </div>
-<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Old city market building with red brick facade" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAItEEEoAItqaiRcM3TQUKzx9VbbOx8PfpSnaHlNZbCzGrEt4g7MGue-UmEolyhBrn0hsij9ZYsUn4lYQVetpp-4slzm05fnHhYTw72YQ4QcCxc34_Ajo3MCCAh_ckHpUZlk2ahVoYIEsVQ0JFd26iHR1lFpr-i0W2IY5rKSD5HCKSJhyrwB_y4j67VGfKVCD07aCMshtuD8DfAp2v3Q038E95EuoIZFICimCPBRAJ6CAPcmaTYf2ZfkYTNwRmKizH-NsRYs7B6eng');"></div>
-</div>
-<div class="p-6">
-<div class="w-8 h-1 bg-secondary mb-4 rounded-full"></div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-2">The Old Market</h3>
-<p class="text-text-muted dark:text-gray-400 text-sm mb-4 line-clamp-3">A bustling hub of local artisans, fresh produce, and historic architecture. Perfect for a morning stroll and breakfast.</p>
-<a class="inline-flex items-center text-sm font-bold text-primary hover:underline decoration-2 underline-offset-4" href="#">
-                        View on Map
-                    </a>
-</div>
-</div>
-<div class="group bg-white dark:bg-background-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 dark:border-gray-800">
-<div class="relative aspect-[4/3] overflow-hidden">
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 z-10 shadow-sm">
-<span class="material-symbols-outlined text-sm text-primary">directions_car</span>
-                        1.2 km
-                    </div>
-<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Scenic river walk path lined with trees at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvzdVBGvc53V7A_bQis-3mErCWNQou0NQ1mYeveDP7HvMJ1nt7Koe8ZIHXZpPem1WJUkZFB9H73o8VbP5x8teDPrexi7Y923FKAlHaGA0jWQ6FhxWsMgtjSecnQanRV3N9fFr9-faOrrtyH6-mIG-vm0xWDei8N6fJSs1vuL4HaZQD3XKbs-uLSi1X_w-LC3qNx3XHbyArJyyJDF5g5rNhbTDkPz6ujrMiJoLFs0tLYxGRsDxhML4O5sunBKft1taV37yEQ67Qwk8');"></div>
-</div>
-<div class="p-6">
-<div class="w-8 h-1 bg-secondary mb-4 rounded-full"></div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-2">River Walk Promenade</h3>
-<p class="text-text-muted dark:text-gray-400 text-sm mb-4 line-clamp-3">Enjoy a serene evening walk along the river. The promenade features several cafes and beautiful sunset views.</p>
-<a class="inline-flex items-center text-sm font-bold text-primary hover:underline decoration-2 underline-offset-4" href="#">
-                        View on Map
-                    </a>
-</div>
-</div>
-<div class="group bg-white dark:bg-background-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 dark:border-gray-800">
-<div class="relative aspect-[4/3] overflow-hidden">
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 z-10 shadow-sm">
-<span class="material-symbols-outlined text-sm text-primary">directions_walk</span>
-                        0.3 km
-                    </div>
-<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cozy interior of a local coffee shop with people reading" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBArhNaZ8_CKetuQx0fC_jnEyHPWHfaQLmoS1d72jaE1Gyi8JmjZrgWk7Zn-TLz00w-fb_0edIUHuVusZlQ-j9PPUB6ldl_ZD8qjWSfAcK8juA3cP8luifEDFUWaiQY04On_k0ev8jIlVuJOivw8mUn0JUQP5p5XALrLLnqH_aj69-yVULQj6mx1Y8nAZ8krYpf3erEGL4Qxo1eBk4-X8vkZGsH5wBFQ5q8f-4whT1Cbpsfv-WVAzODjDwSgVfhQUT4RcS5pOmC3Bs');"></div>
-</div>
-<div class="p-6">
-<div class="w-8 h-1 bg-secondary mb-4 rounded-full"></div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Bean &amp; Leaf Cafe</h3>
-<p class="text-text-muted dark:text-gray-400 text-sm mb-4 line-clamp-3">Our favorite spot for morning brew. Award-winning baristas and a quiet corner to read your book.</p>
-<a class="inline-flex items-center text-sm font-bold text-primary hover:underline decoration-2 underline-offset-4" href="#">
-                        View on Map
-                    </a>
-</div>
-</div>
+
+<!-- Map Container -->
+<div id="home-map" class="w-full h-[500px] rounded-2xl overflow-hidden shadow-soft"></div>
+
+<!-- Explore More Button -->
+<div class="text-center mt-8">
+<a href="/pages/attractions.html" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-0.5 shadow-soft">
+  Explore All Attractions
+  <span class="material-symbols-outlined">arrow_forward</span>
+</a>
 </div>
 </div>
 </section>
-<section class="py-0 relative h-[400px]">
-<div class="absolute inset-0 bg-gray-300">
-<div class="w-full h-full bg-cover bg-center grayscale opacity-80" data-alt="Abstract map view of city streets" data-location="City Map View" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCGS5ZSX_o1mV-cNzvVhKiFg5qMpjQczUgVDzoPrrmL0rK_r6972UkpHvfRWTvfPIPPqBzPle-hlDeL5B83iTMYoKE0oFAXzptLi7XACybgoNSn4u_jr25d7ckRynwf6blwE84iC36co5iPcicApEGLvywBjIAaaRajK7M_wEAD1SM_--jDLjn_FscIaNoQ5BwO_2ybVUrJVmiy6bNlHdeRONueNgkSZvCzhXN3qxEPHArFEMCzNwilcZK7LDZOLMFuA8ZE7AkPomI');"></div>
-<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
-</div>
-<div class="absolute inset-0 flex items-center justify-center p-4">
-<div class="bg-white dark:bg-background-dark p-6 md:p-8 rounded-2xl shadow-xl max-w-sm w-full text-center">
-<div class="inline-flex justify-center items-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-<span class="material-symbols-outlined text-2xl">location_on</span>
-</div>
-<h3 class="text-xl font-bold text-text-main dark:text-white mb-2">Ideally Located</h3>
-<p class="text-text-muted dark:text-gray-400 text-sm mb-6">124 By Moonine Homes is situated in the quietest part of the city center.</p>
-<button class="w-full border border-gray-300 text-text-main dark:border-gray-600 dark:text-white hover:border-primary hover:text-primary py-3 rounded-lg font-bold text-sm transition-colors">
-                Get Directions
-            </button>
-</div>
-</div>
-</section>
+
+<!-- Testimonial Section -->
 <section class="py-24 bg-background-light dark:bg-background-dark">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
 <span class="material-symbols-outlined text-4xl text-secondary/50 mb-6">format_quote</span>
 <blockquote class="text-2xl md:text-3xl font-medium text-text-main dark:text-white leading-relaxed mb-8">
-            "An absolute gem. The interior design is stunning, and the location is perfect for exploring the city. I felt at home the moment I walked in."
-        </blockquote>
+        "An absolute gem. The interior design is stunning, and the location is perfect for exploring Taiping. I felt at home the moment I walked in."
+</blockquote>
 <div class="flex flex-col items-center">
 <div class="w-12 h-12 bg-gray-300 rounded-full mb-3 bg-cover bg-center" data-alt="Portrait of a smiling woman" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxVAvUDMflK5Z7jLpmpwynWwS93XEeRlDCriE_jDxV6VzmwWwfjZw-oKwGg7zkSkiQ90qsNkFhkYvoFvNMKvmlYJxqP1TAFFURAiCsPuhsoeEzRWZ6JpiFbpU6w9aGpThSaFyW0nROgvjhyKKrx8UXu1EUq6RxY9Rf8sSyfo_DvtO4rjZ5wX43LYwa6QOH4acmRNm0dlbdli8WHkVaBKjqwzy8X-Tu9M_NW2kXPGzf-q174ercUlF5G5OMutLvSM_5tSvzYEpYyek');"></div>
 <cite class="not-italic font-bold text-text-main dark:text-white block">Sarah Jenkins</cite>
@@ -388,75 +330,41 @@
 </div>
 </div>
 </section>
+
+<!-- CTA Section -->
 <section class="py-20 bg-primary text-white relative overflow-hidden">
 <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 <div class="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
 <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Ready for your escape?</h2>
-<p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes and experience the perfect blend of comfort and style.</p>
+<p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes and experience the perfect blend of comfort and style in Taiping.</p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
-                Book Now
-            </button>
-<button class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
-                Contact Host
-            </button>
+<a href="https://www.airbnb.com" target="_blank" rel="noopener noreferrer" class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
+            Book Now
+</a>
+<a href="/pages/contact.html" class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+            Contact Host
+</a>
 </div>
 </div>
 </section>
-<footer class="bg-background-dark text-white pt-16 pb-8 border-t border-gray-800">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-<div class="md:col-span-1">
-<div class="flex items-center gap-2 mb-6 text-white">
-<span class="material-symbols-outlined text-2xl">cottage</span>
-<span class="text-lg font-bold">124 By Moonine</span>
-</div>
-<p class="text-gray-400 text-sm leading-relaxed">
-                    A boutique homestay experience designed for the modern traveler.
-                </p>
-</div>
-<div>
-<h4 class="font-bold mb-6 text-sm uppercase tracking-wider text-gray-500">Explore</h4>
-<ul class="space-y-3">
-<li><a class="text-gray-300 hover:text-white text-sm transition-colors" href="#">The Space</a></li>
-<li><a class="text-gray-300 hover:text-white text-sm transition-colors" href="#">Amenities</a></li>
-<li><a class="text-gray-300 hover:text-white text-sm transition-colors" href="#">Gallery</a></li>
-<li><a class="text-gray-300 hover:text-white text-sm transition-colors" href="#">Neighborhood</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold mb-6 text-sm uppercase tracking-wider text-gray-500">Contact</h4>
-<ul class="space-y-3">
-<li class="flex items-center gap-2 text-gray-300 text-sm">
-<span class="material-symbols-outlined text-xs">mail</span> hello@moonine.com
-                    </li>
-<li class="flex items-center gap-2 text-gray-300 text-sm">
-<span class="material-symbols-outlined text-xs">call</span> +1 (555) 123-4567
-                    </li>
-<li class="flex items-center gap-2 text-gray-300 text-sm">
-<span class="material-symbols-outlined text-xs">location_on</span> 124 Moonine St, City
-                    </li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold mb-6 text-sm uppercase tracking-wider text-gray-500">Newsletter</h4>
-<div class="flex gap-2">
-<input class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-primary w-full" placeholder="Email address" type="email"/>
-<button class="bg-primary hover:bg-primary-dark px-4 py-2 rounded-lg text-white transition-colors">
-<span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="text-gray-500 text-xs">© 2024 Moonine Homes. All rights reserved.</p>
-<div class="flex gap-6">
-<a class="text-gray-500 hover:text-white text-xs transition-colors" href="#">Privacy Policy</a>
-<a class="text-gray-500 hover:text-white text-xs transition-colors" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
+
+<!-- Shared Footer -->
+<div id="footer"></div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/assets/js/components.js"></script>
+<script src="/assets/js/map.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize map after a short delay to ensure DOM is ready
+  setTimeout(() => {
+    if (typeof initHomeMap === 'function') {
+      initHomeMap('home-map');
+    }
+  }, 100);
+});
+</script>
 
 </body></html>

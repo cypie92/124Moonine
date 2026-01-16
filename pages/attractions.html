@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Attractions - 124 By Moonine Homes</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#376d64",
+            "primary-dark": "#2a524b",
+            "secondary": "#D9886E",
+            "background-light": "#fbfaf8",
+            "background-card": "#F6F0EB",
+            "background-dark": "#161c1b",
+            "text-main": "#131615",
+            "text-muted": "#5C6664",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"],
+            "sans": ["Manrope", "sans-serif"],
+          },
+          borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+          boxShadow: {
+            "soft": "0 20px 40px -15px rgba(55, 109, 100, 0.1)",
+            "glow": "0 0 40px -10px rgba(217, 136, 110, 0.15)",
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .leaflet-div-icon { background: transparent; border: none; }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased">
+  <div id="header" class="min-h-[80px]"></div>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-16 bg-background-card/50">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-6">Nearby Attractions</h1>
+        <p class="text-lg text-text-muted">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
+      </div>
+    </section>
+
+    <!-- Map + List Section -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Map -->
+          <div class="lg:sticky lg:top-24 h-[400px] lg:h-[calc(100vh-150px)]">
+            <div id="attractions-map" class="w-full h-full rounded-2xl overflow-hidden shadow-soft"></div>
+
+            <!-- Legend -->
+            <div class="mt-4 flex flex-wrap gap-4 text-sm">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#D9886E]"></div>
+                <span class="text-text-muted">Food</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#376d64]"></div>
+                <span class="text-text-muted">Attractions</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#6B7280]"></div>
+                <span class="text-text-muted">Photo Spots</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- List -->
+          <div class="space-y-10">
+            <!-- Food Category -->
+            <div>
+              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-secondary text-lg">restaurant</span>
+                </span>
+                Food & Dining
+              </h2>
+              <div class="space-y-4" id="food-list"></div>
+            </div>
+
+            <!-- Attractions Category -->
+            <div>
+              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-primary text-lg">photo_camera</span>
+                </span>
+                Attractions
+              </h2>
+              <div class="space-y-4" id="attraction-list"></div>
+            </div>
+
+            <!-- Photo Spots Category -->
+            <div>
+              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-gray-600 text-lg">landscape</span>
+                </span>
+                Photo Spots
+              </h2>
+              <div class="space-y-4" id="photoSpot-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/assets/js/components.js"></script>
+  <script src="/assets/js/map.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        if (typeof initAttractionsPageMap === 'function') {
+          initAttractionsPageMap('attractions-map');
+        }
+
+        // Populate lists
+        const categories = ['food', 'attraction', 'photoSpot'];
+        const categoryIcons = {
+          food: 'restaurant',
+          attraction: 'photo_camera',
+          photoSpot: 'landscape'
+        };
+
+        categories.forEach(category => {
+          const list = document.getElementById(`${category}-list`);
+          const items = window.attractions ? window.attractions[category] : [];
+
+          if (items && items.length > 0) {
+            items.forEach(item => {
+              const card = document.createElement('div');
+              card.className = 'bg-white rounded-xl p-4 shadow-sm hover:shadow-soft transition-all border border-gray-100';
+              card.innerHTML = `
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="font-bold text-text-main text-lg">${item.name}</h3>
+                    <p class="text-sm text-text-muted mt-1">${item.description}</p>
+                  </div>
+                  <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold whitespace-nowrap ml-4">
+                    ${item.distance}
+                  </span>
+                </div>
+              `;
+              list.appendChild(card);
+            });
+          } else {
+            list.innerHTML = '<p class="text-text-muted text-sm">No items yet. Add attractions in map.js</p>';
+          }
+        });
+      }, 200);
+    });
+  </script>
+</body>
+</html>
