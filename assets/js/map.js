@@ -111,13 +111,18 @@ function showCategory(category) {
     const marker = L.marker([attraction.lat, attraction.lng], { icon: customIcon })
       .addTo(map)
       .bindPopup(`
-        <div style="text-align: center; padding: 12px; width: 220px;">
-          <img src="${attraction.image}" alt="${attraction.name}" style="width: 200px; height: 140px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; display: block;" onerror="this.style.display='none'">
-          <h4 style="font-weight: bold; margin: 0 0 6px 0; color: #131615; font-size: 15px;">${attraction.name}</h4>
-          <p style="font-size: 13px; color: #5C6664; margin: 0 0 6px 0; line-height: 1.4;">${attraction.description}</p>
-          <p style="font-size: 12px; color: #376d64; font-weight: 600; margin: 0;">${attraction.distance} from homestay</p>
+        <div style="text-align: center; padding: 0; width: 200px;">
+          <img src="${attraction.image}" alt="${attraction.name}" style="width: 200px; height: 200px; object-fit: cover; display: block;" onerror="this.style.display='none'">
+          <div style="padding: 12px;">
+            <h4 style="font-weight: bold; margin: 0 0 6px 0; color: #131615; font-size: 15px;">${attraction.name}</h4>
+            <p style="font-size: 13px; color: #5C6664; margin: 0 0 8px 0; line-height: 1.4;">${attraction.description}</p>
+            <p style="font-size: 12px; color: #376d64; font-weight: 600; margin: 0 0 12px 0;">${attraction.distance} from homestay</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=${attraction.lat},${attraction.lng}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #376d64; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+              <span style="font-size: 16px;">&#x2197;</span> Explore
+            </a>
+          </div>
         </div>
-      `, { maxWidth: 250 });
+      `, { maxWidth: 220, className: 'custom-popup' });
 
     markers.push(marker);
   });
