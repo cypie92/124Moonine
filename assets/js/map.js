@@ -3,12 +3,23 @@
  * Location: Taiping, Perak, Malaysia
  */
 
+// Get base path for assets (handles GitHub Pages subdirectory)
+function getMapBasePath() {
+  const path = window.location.pathname;
+  if (path.includes('/pages/')) {
+    return '..';
+  }
+  return '.';
+}
+
+const MAP_BASE = getMapBasePath();
+
 // Homestay coordinates
 const HOMESTAY_LOCATION = {
   lat: 4.8688581,
   lng: 100.7278357,
   name: '124 By Moonine Homes',
-  image: '/assets/images/homestay-marker.png',
+  image: `${MAP_BASE}/assets/images/homestay-marker.png`,
   mapUrl: 'https://maps.app.goo.gl/kdjP9qjCCXb7RqBb7'
 };
 
@@ -16,24 +27,24 @@ const HOMESTAY_LOCATION = {
 // Add more attractions as needed - just follow the same format
 const attractions = {
   food: [
-    { id: 1, name: 'Local Restaurant 1', lat: 4.8700, lng: 100.7280, image: '/assets/images/attractions/food-1.jpg', description: 'Authentic local cuisine', distance: '0.5 km' },
-    { id: 2, name: 'Cafe Taiping', lat: 4.8675, lng: 100.7220, image: '/assets/images/attractions/food-2.jpg', description: 'Coffee and pastries', distance: '0.4 km' },
-    { id: 3, name: 'Hawker Center', lat: 4.8710, lng: 100.7240, image: '/assets/images/attractions/food-3.jpg', description: 'Street food paradise', distance: '0.6 km' },
-    { id: 4, name: 'Seafood Restaurant', lat: 4.8660, lng: 100.7270, image: '/assets/images/attractions/food-4.jpg', description: 'Fresh seafood daily', distance: '0.8 km' },
-    { id: 5, name: 'Dessert House', lat: 4.8695, lng: 100.7230, image: '/assets/images/attractions/food-5.jpg', description: 'Local desserts & sweets', distance: '0.3 km' }
+    { id: 1, name: 'Local Restaurant 1', lat: 4.8700, lng: 100.7280, image: `${MAP_BASE}/assets/images/attractions/food-1.jpg`, description: 'Authentic local cuisine', distance: '0.5 km' },
+    { id: 2, name: 'Cafe Taiping', lat: 4.8675, lng: 100.7220, image: `${MAP_BASE}/assets/images/attractions/food-2.jpg`, description: 'Coffee and pastries', distance: '0.4 km' },
+    { id: 3, name: 'Hawker Center', lat: 4.8710, lng: 100.7240, image: `${MAP_BASE}/assets/images/attractions/food-3.jpg`, description: 'Street food paradise', distance: '0.6 km' },
+    { id: 4, name: 'Seafood Restaurant', lat: 4.8660, lng: 100.7270, image: `${MAP_BASE}/assets/images/attractions/food-4.jpg`, description: 'Fresh seafood daily', distance: '0.8 km' },
+    { id: 5, name: 'Dessert House', lat: 4.8695, lng: 100.7230, image: `${MAP_BASE}/assets/images/attractions/food-5.jpg`, description: 'Local desserts & sweets', distance: '0.3 km' }
   ],
   attraction: [
-    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: '/assets/images/attractions/zoo-taiping.png', description: 'Malaysia\'s first night safari zoo', distance: '3.0 km', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
-    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: '/assets/images/attractions/perak-museum.png', description: 'Oldest museum in Malaysia', distance: '2.1 km', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
-    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: '/assets/images/attractions/clock-tower.png', description: 'Historic Taiping landmark', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
-    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: '/assets/images/attractions/dataran-warisan.png', description: 'Heritage Square of Taiping', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
+    { id: 1, name: 'Zoo Taiping & Night Safari', lat: 4.8550004, lng: 100.7484571, image: `${MAP_BASE}/assets/images/attractions/zoo-taiping.png`, description: 'Malaysia\'s first night safari zoo', distance: '3.0 km', mapUrl: 'https://maps.app.goo.gl/TcVcMwzSDNtrfEbP7' },
+    { id: 2, name: 'Perak Museum', lat: 4.8604233, lng: 100.742802, image: `${MAP_BASE}/assets/images/attractions/perak-museum.png`, description: 'Oldest museum in Malaysia', distance: '2.1 km', mapUrl: 'https://maps.app.goo.gl/FM9PQd8J7AEZ8iYf9' },
+    { id: 3, name: 'Clock Tower', lat: 4.8532907, lng: 100.7405346, image: `${MAP_BASE}/assets/images/attractions/clock-tower.png`, description: 'Historic Taiping landmark', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/FSKtBA2aUfDoYs4r9' },
+    { id: 4, name: 'Dataran Warisan Taiping', lat: 4.8542228, lng: 100.7408228, image: `${MAP_BASE}/assets/images/attractions/dataran-warisan.png`, description: 'Heritage Square of Taiping', distance: '2.3 km', mapUrl: 'https://maps.app.goo.gl/q3h2Hckqs1eWmDgm8' }
   ],
   photoSpot: [
-    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: '/assets/images/attractions/photo-1.jpg', description: 'Iconic tree-lined path', distance: '2.3 km' },
-    { id: 2, name: 'Antong Coffee Mill', lat: 4.8720, lng: 100.7150, image: '/assets/images/attractions/photo-2.jpg', description: 'Traditional coffee factory', distance: '1.5 km' },
-    { id: 3, name: 'Taiping Clock Tower', lat: 4.8505, lng: 100.7340, image: '/assets/images/attractions/photo-3.jpg', description: 'Historic landmark', distance: '2.2 km' },
-    { id: 4, name: 'Spritzer EcoPark', lat: 4.8400, lng: 100.7100, image: '/assets/images/attractions/photo-4.jpg', description: 'Natural eco park', distance: '4.0 km' },
-    { id: 5, name: 'Kuala Sepetang', lat: 4.8400, lng: 100.6300, image: '/assets/images/attractions/photo-5.jpg', description: 'Fishing village & mangroves', distance: '12 km' }
+    { id: 1, name: 'Rain Tree Walk', lat: 4.8530, lng: 100.7360, image: `${MAP_BASE}/assets/images/attractions/photo-1.jpg`, description: 'Iconic tree-lined path', distance: '2.3 km' },
+    { id: 2, name: 'Antong Coffee Mill', lat: 4.8720, lng: 100.7150, image: `${MAP_BASE}/assets/images/attractions/photo-2.jpg`, description: 'Traditional coffee factory', distance: '1.5 km' },
+    { id: 3, name: 'Taiping Clock Tower', lat: 4.8505, lng: 100.7340, image: `${MAP_BASE}/assets/images/attractions/photo-3.jpg`, description: 'Historic landmark', distance: '2.2 km' },
+    { id: 4, name: 'Spritzer EcoPark', lat: 4.8400, lng: 100.7100, image: `${MAP_BASE}/assets/images/attractions/photo-4.jpg`, description: 'Natural eco park', distance: '4.0 km' },
+    { id: 5, name: 'Kuala Sepetang', lat: 4.8400, lng: 100.6300, image: `${MAP_BASE}/assets/images/attractions/photo-5.jpg`, description: 'Fishing village & mangroves', distance: '12 km' }
   ]
 };
 

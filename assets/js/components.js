@@ -3,11 +3,25 @@
  * Loads HTML partials and injects them into the page
  */
 
+function getBasePath() {
+  // Determine if we're in a subdirectory (pages/) or root
+  const path = window.location.pathname;
+  if (path.includes('/pages/')) {
+    return '..';
+  }
+  return '.';
+}
+
 async function loadComponent(elementId, componentPath) {
   try {
     const response = await fetch(componentPath);
     if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
-    const html = await response.text();
+    let html = await response.text();
+
+    // Replace {{BASE}} placeholder with actual base path
+    const base = getBasePath();
+    html = html.replace(/\{\{BASE\}\}/g, base);
+
     const element = document.getElementById(elementId);
     if (element) {
       element.innerHTML = html;
@@ -16,15 +30,6 @@ async function loadComponent(elementId, componentPath) {
   } catch (error) {
     console.error('Component loading error:', error);
   }
-}
-
-function getBasePath() {
-  // Determine if we're in a subdirectory (pages/) or root
-  const path = window.location.pathname;
-  if (path.includes('/pages/')) {
-    return '..';
-  }
-  return '.';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
