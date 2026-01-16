@@ -39,7 +39,7 @@ const attractions = {
 
 let map = null;
 let markers = [];
-let currentCategory = 'food';
+let currentCategory = 'attraction';
 
 /**
  * Initialize the homepage map with category tabs
@@ -79,7 +79,7 @@ function initHomeMap(containerId) {
     `, { maxWidth: 200, className: 'custom-popup' });
 
   // Load initial category
-  showCategory('food');
+  showCategory('attraction');
 }
 
 /**
