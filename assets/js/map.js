@@ -75,6 +75,11 @@ let map = null;
 let markers = [];
 let currentCategory = 'attraction';
 
+// For attractions page
+let attractionsMap = null;
+let attractionsMarkers = {}; // Markers organized by category
+let currentAttractionsCategory = 'food';
+
 /**
  * Initialize the homepage map with category tabs
  */
@@ -194,7 +199,7 @@ function initAttractionsPageMap(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const attractionsMap = L.map(containerId).setView([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], 12);
+  attractionsMap = L.map(containerId).setView([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng], 12);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -237,11 +242,18 @@ function initAttractionsPageMap(containerId) {
     photoSpot: '#6B7280'
   };
 
+  // Initialize markers object for each category
+  attractionsMarkers = {
+    food: [],
+    attraction: [],
+    photoSpot: []
+  };
+
   // Add all attractions with circular image markers (same as home page)
   Object.entries(attractions).forEach(([category, items]) => {
     const borderColor = categoryColors[category] || '#376d64';
 
-    items.forEach(attraction => {
+    items.forEach((attraction, index) => {
       // Create custom circular image marker with colored border
       const customIcon = L.divIcon({
         className: 'attraction-marker',
@@ -250,8 +262,7 @@ function initAttractionsPageMap(containerId) {
         iconAnchor: [39, 39]
       });
 
-      L.marker([attraction.lat, attraction.lng], { icon: customIcon })
-        .addTo(attractionsMap)
+      const marker = L.marker([attraction.lat, attraction.lng], { icon: customIcon })
         .bindPopup(`
           <div style="text-align: center; padding: 0; width: 200px;">
             <img src="${attraction.image}" alt="${attraction.name}" style="width: 200px; height: 200px; object-fit: cover; display: block;" onerror="this.style.display='none'">
@@ -265,8 +276,71 @@ function initAttractionsPageMap(containerId) {
             </div>
           </div>
         `, { maxWidth: 220, className: 'custom-popup' });
+
+      // Store marker with its attraction data
+      attractionsMarkers[category].push({
+        marker: marker,
+        attraction: attraction,
+        index: index
+      });
     });
   });
+
+  // Show initial category (food)
+  filterAttractionsMapMarkers('food');
+}
+
+/**
+ * Filter attractions map markers by category
+ */
+function filterAttractionsMapMarkers(category) {
+  if (!attractionsMap) return;
+
+  currentAttractionsCategory = category;
+
+  // Remove all markers from map
+  Object.values(attractionsMarkers).forEach(categoryMarkers => {
+    categoryMarkers.forEach(item => {
+      attractionsMap.removeLayer(item.marker);
+    });
+  });
+
+  // Add only markers for selected category
+  const categoryMarkers = attractionsMarkers[category] || [];
+  categoryMarkers.forEach(item => {
+    item.marker.addTo(attractionsMap);
+  });
+
+  // Fit bounds to show all visible markers plus homestay
+  if (categoryMarkers.length > 0) {
+    const visibleMarkers = categoryMarkers.map(item => item.marker);
+    const group = new L.featureGroup([
+      L.marker([HOMESTAY_LOCATION.lat, HOMESTAY_LOCATION.lng]),
+      ...visibleMarkers
+    ]);
+    attractionsMap.fitBounds(group.getBounds().pad(0.1));
+  }
+}
+
+/**
+ * Focus on a specific attraction marker and open its popup
+ */
+function focusOnAttraction(category, index) {
+  if (!attractionsMap || !attractionsMarkers[category]) return;
+
+  const item = attractionsMarkers[category][index];
+  if (!item) return;
+
+  // Pan to the marker with animation
+  attractionsMap.setView([item.attraction.lat, item.attraction.lng], 15, {
+    animate: true,
+    duration: 0.5
+  });
+
+  // Open the popup after a short delay to allow pan animation
+  setTimeout(() => {
+    item.marker.openPopup();
+  }, 300);
 }
 
 /**
@@ -311,3 +385,5 @@ window.initAttractionsPageMap = initAttractionsPageMap;
 window.initContactMap = initContactMap;
 window.showCategory = showCategory;
 window.attractions = attractions;
+window.filterAttractionsMapMarkers = filterAttractionsMapMarkers;
+window.focusOnAttraction = focusOnAttraction;

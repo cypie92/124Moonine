@@ -163,6 +163,11 @@
       if (activeSection) {
         activeSection.classList.remove('hidden');
       }
+
+      // Filter map markers to show only current category
+      if (typeof filterAttractionsMapMarkers === 'function') {
+        filterAttractionsMapMarkers(category);
+      }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -190,7 +195,7 @@
           }
 
           if (items && items.length > 0) {
-            items.forEach(item => {
+            items.forEach((item, index) => {
               const card = document.createElement('div');
               card.className = 'bg-white rounded-xl p-4 shadow-sm hover:shadow-soft transition-all border border-gray-100 cursor-pointer';
               card.innerHTML = `
@@ -207,8 +212,12 @@
                   </div>
                 </div>
               `;
-              // Add click to open map link
-              card.onclick = () => window.open(item.mapUrl, '_blank');
+              // Add click to focus on map marker and open popup
+              card.onclick = () => {
+                if (typeof focusOnAttraction === 'function') {
+                  focusOnAttraction(category, index);
+                }
+              };
               list.appendChild(card);
             });
           } else {
