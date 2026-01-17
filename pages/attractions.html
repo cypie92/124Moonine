@@ -47,32 +47,10 @@
 
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="py-16 bg-background-card/50">
+    <section class="py-8 bg-background-card/50">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-6">Nearby Attractions</h1>
-        <p class="text-lg text-text-muted mb-8">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
-
-        <!-- Category Pills -->
-        <div class="flex flex-wrap justify-center gap-3">
-          <button
-            class="category-pill bg-secondary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft"
-            data-category="food" onclick="filterCategory('food')">
-            <span class="material-symbols-outlined align-middle mr-1">restaurant</span> Food
-            <span class="ml-1 text-sm opacity-80" id="food-count"></span>
-          </button>
-          <button
-            class="category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
-            data-category="attraction" onclick="filterCategory('attraction')">
-            <span class="material-symbols-outlined align-middle mr-1">photo_camera</span> Attractions
-            <span class="ml-1 text-sm opacity-80" id="attraction-count"></span>
-          </button>
-          <button
-            class="category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
-            data-category="photoSpot" onclick="filterCategory('photoSpot')">
-            <span class="material-symbols-outlined align-middle mr-1">landscape</span> Photo Spots
-            <span class="ml-1 text-sm opacity-80" id="photoSpot-count"></span>
-          </button>
-        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-4">Nearby Attractions</h1>
+        <p class="text-lg text-text-muted">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
       </div>
     </section>
 
@@ -102,37 +80,43 @@
           </div>
 
           <!-- List -->
-          <div class="space-y-10">
+          <div>
+            <!-- Sticky Category Pills -->
+            <div class="sticky top-20 z-10 bg-background-light/95 backdrop-blur-sm py-4 -mx-4 px-4 mb-6">
+              <div class="flex flex-wrap gap-2">
+                <button
+                  class="category-pill bg-secondary text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm"
+                  data-category="food" onclick="filterCategory('food')">
+                  <span class="material-symbols-outlined align-middle mr-1 text-lg">restaurant</span> Food
+                  <span class="ml-1 text-xs opacity-80" id="food-count"></span>
+                </button>
+                <button
+                  class="category-pill bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
+                  data-category="attraction" onclick="filterCategory('attraction')">
+                  <span class="material-symbols-outlined align-middle mr-1 text-lg">photo_camera</span> Attractions
+                  <span class="ml-1 text-xs opacity-80" id="attraction-count"></span>
+                </button>
+                <button
+                  class="category-pill bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
+                  data-category="photoSpot" onclick="filterCategory('photoSpot')">
+                  <span class="material-symbols-outlined align-middle mr-1 text-lg">landscape</span> Photo Spots
+                  <span class="ml-1 text-xs opacity-80" id="photoSpot-count"></span>
+                </button>
+              </div>
+            </div>
+
             <!-- Food Category -->
             <div id="food-section" class="category-section">
-              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-secondary text-lg">restaurant</span>
-                </span>
-                Food & Dining
-              </h2>
               <div class="grid gap-4" id="food-list"></div>
             </div>
 
             <!-- Attractions Category -->
             <div id="attraction-section" class="category-section hidden">
-              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary text-lg">photo_camera</span>
-                </span>
-                Attractions
-              </h2>
               <div class="grid gap-4" id="attraction-list"></div>
             </div>
 
             <!-- Photo Spots Category -->
             <div id="photoSpot-section" class="category-section hidden">
-              <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
-                <span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-gray-600 text-lg">landscape</span>
-                </span>
-                Photo Spots
-              </h2>
               <div class="grid gap-4" id="photoSpot-list"></div>
             </div>
           </div>
@@ -159,15 +143,15 @@
         if (pillCategory === category) {
           // Active state - use category-specific colors
           if (category === 'food') {
-            pill.className = 'category-pill bg-secondary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+            pill.className = 'category-pill bg-secondary text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm';
           } else if (category === 'attraction') {
-            pill.className = 'category-pill bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+            pill.className = 'category-pill bg-primary text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm';
           } else if (category === 'photoSpot') {
-            pill.className = 'category-pill bg-gray-600 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+            pill.className = 'category-pill bg-gray-600 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm';
           }
         } else {
           // Inactive state
-          pill.className = 'category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft';
+          pill.className = 'category-pill bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm';
         }
       });
 
