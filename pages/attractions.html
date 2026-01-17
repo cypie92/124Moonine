@@ -50,7 +50,29 @@
     <section class="py-16 bg-background-card/50">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-6">Nearby Attractions</h1>
-        <p class="text-lg text-text-muted">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
+        <p class="text-lg text-text-muted mb-8">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
+
+        <!-- Category Pills -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            class="category-pill bg-secondary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft"
+            data-category="food" onclick="filterCategory('food')">
+            <span class="material-symbols-outlined align-middle mr-1">restaurant</span> Food
+            <span class="ml-1 text-sm opacity-80" id="food-count"></span>
+          </button>
+          <button
+            class="category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
+            data-category="attraction" onclick="filterCategory('attraction')">
+            <span class="material-symbols-outlined align-middle mr-1">photo_camera</span> Attractions
+            <span class="ml-1 text-sm opacity-80" id="attraction-count"></span>
+          </button>
+          <button
+            class="category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
+            data-category="photoSpot" onclick="filterCategory('photoSpot')">
+            <span class="material-symbols-outlined align-middle mr-1">landscape</span> Photo Spots
+            <span class="ml-1 text-sm opacity-80" id="photoSpot-count"></span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -82,36 +104,36 @@
           <!-- List -->
           <div class="space-y-10">
             <!-- Food Category -->
-            <div>
+            <div id="food-section" class="category-section">
               <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
                 <span class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
                   <span class="material-symbols-outlined text-secondary text-lg">restaurant</span>
                 </span>
                 Food & Dining
               </h2>
-              <div class="space-y-4" id="food-list"></div>
+              <div class="grid gap-4" id="food-list"></div>
             </div>
 
             <!-- Attractions Category -->
-            <div>
+            <div id="attraction-section" class="category-section hidden">
               <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
                 <span class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                   <span class="material-symbols-outlined text-primary text-lg">photo_camera</span>
                 </span>
                 Attractions
               </h2>
-              <div class="space-y-4" id="attraction-list"></div>
+              <div class="grid gap-4" id="attraction-list"></div>
             </div>
 
             <!-- Photo Spots Category -->
-            <div>
+            <div id="photoSpot-section" class="category-section hidden">
               <h2 class="text-2xl font-bold text-text-main mb-6 flex items-center gap-2">
                 <span class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
                   <span class="material-symbols-outlined text-gray-600 text-lg">landscape</span>
                 </span>
                 Photo Spots
               </h2>
-              <div class="space-y-4" id="photoSpot-list"></div>
+              <div class="grid gap-4" id="photoSpot-list"></div>
             </div>
           </div>
         </div>
@@ -125,6 +147,40 @@
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/map.js"></script>
   <script>
+    let currentAttractionCategory = 'food';
+
+    // Filter category and update UI
+    function filterCategory(category) {
+      currentAttractionCategory = category;
+
+      // Update pill styles
+      document.querySelectorAll('.category-pill').forEach(pill => {
+        const pillCategory = pill.dataset.category;
+        if (pillCategory === category) {
+          // Active state - use category-specific colors
+          if (category === 'food') {
+            pill.className = 'category-pill bg-secondary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+          } else if (category === 'attraction') {
+            pill.className = 'category-pill bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+          } else if (category === 'photoSpot') {
+            pill.className = 'category-pill bg-gray-600 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-soft';
+          }
+        } else {
+          // Inactive state
+          pill.className = 'category-pill bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft';
+        }
+      });
+
+      // Show/hide category sections
+      document.querySelectorAll('.category-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      const activeSection = document.getElementById(`${category}-section`);
+      if (activeSection) {
+        activeSection.classList.remove('hidden');
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
         if (typeof initAttractionsPageMap === 'function') {
@@ -143,27 +199,41 @@
           const list = document.getElementById(`${category}-list`);
           const items = window.attractions ? window.attractions[category] : [];
 
+          // Update count in pills
+          const countEl = document.getElementById(`${category}-count`);
+          if (countEl && items) {
+            countEl.textContent = `(${items.length})`;
+          }
+
           if (items && items.length > 0) {
             items.forEach(item => {
               const card = document.createElement('div');
-              card.className = 'bg-white rounded-xl p-4 shadow-sm hover:shadow-soft transition-all border border-gray-100';
+              card.className = 'bg-white rounded-xl p-4 shadow-sm hover:shadow-soft transition-all border border-gray-100 cursor-pointer';
               card.innerHTML = `
-                <div class="flex justify-between items-start">
-                  <div>
-                    <h3 class="font-bold text-text-main text-lg">${item.name}</h3>
-                    <p class="text-sm text-text-muted mt-1">${item.description}</p>
+                <div class="flex gap-4 items-start">
+                  <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover flex-shrink-0" onerror="this.style.display='none'">
+                  <div class="flex-grow min-w-0">
+                    <div class="flex justify-between items-start gap-2">
+                      <h3 class="font-bold text-text-main text-lg leading-tight">${item.name}</h3>
+                      <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold whitespace-nowrap flex-shrink-0">
+                        ${item.distance}
+                      </span>
+                    </div>
+                    <p class="text-sm text-text-muted mt-1 line-clamp-2">${item.description}</p>
                   </div>
-                  <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-semibold whitespace-nowrap ml-4">
-                    ${item.distance}
-                  </span>
                 </div>
               `;
+              // Add click to open map link
+              card.onclick = () => window.open(item.mapUrl, '_blank');
               list.appendChild(card);
             });
           } else {
             list.innerHTML = '<p class="text-text-muted text-sm">No items yet. Add attractions in map.js</p>';
           }
         });
+
+        // Initialize with food category visible
+        filterCategory('food');
       }, 200);
     });
   </script>
