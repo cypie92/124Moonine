@@ -68,34 +68,35 @@
     <div id="header" class="min-h-[80px]"></div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4">
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div
                 class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-background-light dark:to-background-dark z-10">
             </div>
-            <div class="w-full h-full bg-cover bg-center"
+            <div class="parallax-bg w-full h-[110%] bg-cover bg-center"
+                id="hero-bg"
                 data-alt="Spacious modern living and dining area with high ceilings"
                 style="background-image: url('./assets/images/hero/landing_banner.jpg');"></div>
         </div>
         <div class="relative z-20 max-w-4xl w-full mx-auto text-center">
             <div
-                class="bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-glow mx-4 border border-white/20">
+                class="hero-card bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-glow mx-4 border border-white/20">
                 <span
-                    class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
+                    class="hero-badge inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
                     Guest Favorite · Top 10%
                 </span>
                 <h1
-                    class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-main dark:text-white leading-[1.1] tracking-tight mb-6">
+                    class="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold text-text-main dark:text-white leading-[1.1] tracking-tight mb-6">
                     A Sanctuary of <br /><span class="text-primary italic font-serif">Calm &amp; Comfort</span>
                 </h1>
-                <p class="text-lg md:text-xl text-text-muted dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium">
-                    4900 sqft of space for up to 14 guests · 4 Bedrooms · 6 Beds · 3 Baths · Perfect for parties, events
+                <p class="hero-subtitle text-lg md:text-xl text-text-muted dark:text-gray-300 max-w-2xl mx-auto mb-8 font-medium">
+                    <span class="counter-animate" data-target="4900">4900</span> sqft of space for up to <span class="counter-animate" data-target="14">14</span> guests · <span class="counter-animate" data-target="4">4</span> Bedrooms · <span class="counter-animate" data-target="6">6</span> Beds · <span class="counter-animate" data-target="3">3</span> Baths · Perfect for parties, events
                     &amp; gatherings in Taiping.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="https://www.airbnb.com/rooms/1015848496504857562?source_impression_id=p3_1768552046_P3xJimP1sqwbeRRC&modal=PHOTO_TOUR_SCROLLABLE"
                         target="_blank" rel="noopener noreferrer"
-                        class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2">
+                        class="btn-pulse w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
                         <span>View Gallery</span>
                         <span class="material-symbols-outlined text-sm">photo_library</span>
                     </a>
@@ -111,21 +112,21 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="flex flex-col gap-6 order-2 lg:order-1">
-                    <div class="flex items-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase">
-                        <span class="w-8 h-[2px] bg-secondary"></span>
+                    <div class="animate-on-scroll flex items-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase">
+                        <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                         About Us
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">
+                    <h2 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main dark:text-white leading-tight">
                         Designed for <br />serenity.
                     </h2>
-                    <p class="text-lg text-text-muted dark:text-gray-400 leading-relaxed">
+                    <p class="animate-on-scroll stagger-2 text-lg text-text-muted dark:text-gray-400 leading-relaxed">
                         Experience our beautifully renovated 4900 sqft single-storey Semi-D in Taman Taiping. Hosted by
                         <strong class="text-text-main dark:text-white">Kelvin & YinYin</strong>, Superhosts with 8 years
                         of experience and a 5.0 rating from 42 reviews. Strategically located near restaurants, cafes,
                         malls & attractions - everything is just minutes away!
                     </p>
                     <div class="grid grid-cols-2 gap-6 mt-6">
-                        <div class="flex items-start gap-3">
+                        <div class="animate-on-scroll stagger-1 feature-card-hover flex items-start gap-3 p-3 rounded-xl">
                             <div class="p-2 rounded-lg bg-primary/10 text-primary">
                                 <span class="material-symbols-outlined">wifi</span>
                             </div>
@@ -134,7 +135,7 @@
                                 <p class="text-sm text-text-muted dark:text-gray-500">300 Mbps fiber optic</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
+                        <div class="animate-on-scroll stagger-2 feature-card-hover flex items-start gap-3 p-3 rounded-xl">
                             <div class="p-2 rounded-lg bg-primary/10 text-primary">
                                 <span class="material-symbols-outlined">local_parking</span>
                             </div>
@@ -143,7 +144,7 @@
                                 <p class="text-sm text-text-muted dark:text-gray-500">1 inside, 3+ outside</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
+                        <div class="animate-on-scroll stagger-3 feature-card-hover flex items-start gap-3 p-3 rounded-xl">
                             <div class="p-2 rounded-lg bg-primary/10 text-primary">
                                 <span class="material-symbols-outlined">schedule</span>
                             </div>
@@ -152,7 +153,7 @@
                                 <p class="text-sm text-text-muted dark:text-gray-500">More time to relax!</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
+                        <div class="animate-on-scroll stagger-4 feature-card-hover flex items-start gap-3 p-3 rounded-xl">
                             <div class="p-2 rounded-lg bg-primary/10 text-primary">
                                 <span class="material-symbols-outlined">family_restroom</span>
                             </div>
@@ -162,8 +163,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8">
-                        <a class="inline-flex items-center text-primary font-bold hover:gap-2 transition-all"
+                    <div class="animate-on-scroll stagger-5 mt-8">
+                        <a class="arrow-bounce inline-flex items-center text-primary font-bold hover:gap-2 transition-all"
                             href="./pages/about.html">
                             Read more about the space <span
                                 class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
@@ -172,7 +173,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4 order-1 lg:order-2">
                     <div class="flex flex-col gap-4 mt-12">
-                        <div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
+                        <div class="animate-scale-in stagger-2 w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group card-hover-lift">
                             <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                 data-alt="Minimalist cozy bedroom with white linens and wooden accents"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtqbIW1Fi3-W91Qx-YtQ2VS1EtAOWSjM4-glQO-mpERpU6OpiAhApx27-chOP9bzyPJ4qsgUTznz2Lyczq50T9akP0012dlHnhIgNhorQoMJXG3H_MZft_tx6H62SaYb8JDkZyTYr1j31UDRtIR10vZyFoJd5Ux-XE4X5eYf6TEIPoTNxIXEULYNBqzHpB2b45FXP1R6_Bbh841jJpdnwK6Wbx-POeUfZX2UkRkgNh4o7oxYpDRj0iHPBhy9Av2S-8hLTzQQYhbJg');">
@@ -180,13 +181,13 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-4">
-                        <div class="w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden group">
+                        <div class="animate-scale-in stagger-1 w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden group card-hover-lift">
                             <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                 data-alt="Modern kitchen detail with teal cabinets and marble countertop"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqVOUuuvjydMtybJeAKGMR_ST0Sb1NG2K2azEj7Lm_9oXpINgjgPRdO_4Xv5gZa8-1reS3rSqUhXO03zf76k4OYHweVAa1K5Nz3auITd4gQjYTUCGi2g758y-5hpMS3AGrdeH1DWEhqO9lrGmt6Ca_5PvntgsSnMI4qRWWaoaLmopk1nF23-MneudXteTsnjEacr1pf8IbGFL1xi6HAMP_vgb5PQGefpUWua-t-PwjWdb55oKMTOHltJClYdz8gUyXa2ppvarvUW0');">
                             </div>
                         </div>
-                        <div class="w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group">
+                        <div class="animate-scale-in stagger-3 w-full aspect-[3/4] bg-gray-200 rounded-2xl overflow-hidden group card-hover-lift">
                             <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                 data-alt="Comfortable armchair in a sunlit corner of the room"
                                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-2EDxgsx_gxahyV8RMO3SQ5pImRZTcO6SvFzD-QYtipwIfpcBNsB-MyRAgM5clBUa0pCiq_YnlWbGJyOB0oAGClY5SND_FtAQAXdIGHiAEiWxqJeQqo9oG78j-GAgwFQ6faFZeSt87NwX4VxanfIMfMQI_f7yZqyBZCPhi0H7tPUHtg-BrSJuGTmeUKlbC9kzCxzlXbgQTYE1HDbny3ruzW6iuC14aCV5mLURN-AYUZVNRPVBqqVsnvA-FWC8f_CtN8-AM3bCz1w');">
@@ -201,34 +202,34 @@
     <!-- Facilities Section -->
     <section class="py-24 bg-background-light dark:bg-background-dark relative" id="facilities">
         <div
-            class="absolute top-1/2 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2">
+            class="float-slow absolute top-1/2 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2">
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-20">
                 <div
-                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                     Experiences
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">Facilities &amp;
+                <h2 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-6">Facilities &amp;
                     Experiences</h2>
-                <p class="text-lg text-text-muted dark:text-gray-400">
+                <p class="animate-on-scroll stagger-2 text-lg text-text-muted dark:text-gray-400">
                     Beyond a place to sleep, 124 By Moonine Homes offers curated spaces for connection, celebration, and
                     play.
                 </p>
             </div>
             <div
-                class="bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden mb-12">
+                class="animate-on-scroll bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden mb-12">
                 <div
-                    class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3">
+                    class="float-animation absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3">
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-                        <div class="w-full h-full bg-cover bg-center"
+                    <div class="animate-slide-left relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg card-hover-lift">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
                             style="background-image: url('./assets/images/gallery/outdoor_bbq.jpg');"></div>
                     </div>
-                    <div>
+                    <div class="animate-slide-right">
                         <span
                             class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
                             Outdoor Living
@@ -241,22 +242,22 @@
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">outdoor_grill</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Premium Grill Equipment</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">wb_twilight</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Evening Ambiance</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">chair</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Ample Seating</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">star</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Under the Stars</span>
                             </div>
@@ -265,12 +266,12 @@
                 </div>
             </div>
             <div
-                class="bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden mb-12">
+                class="animate-on-scroll bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden mb-12">
                 <div
-                    class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3">
+                    class="float-slow absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3">
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div class="order-2 lg:order-1">
+                    <div class="animate-slide-left order-2 lg:order-1">
                         <span
                             class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/20">
                             Entertainment
@@ -283,44 +284,44 @@
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
                                 <span class="material-symbols-outlined text-secondary">mic_external_on</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">High-End Sound System</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
                                 <span class="material-symbols-outlined text-secondary">tv</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Large Display Screen</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
                                 <span class="material-symbols-outlined text-secondary">volume_up</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Soundproof Room</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-secondary/20 transition-all">
                                 <span class="material-symbols-outlined text-secondary">nightlife</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Party All Night</span>
                             </div>
                         </div>
                     </div>
-                    <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg order-1 lg:order-2">
-                        <div class="w-full h-full bg-cover bg-center"
+                    <div class="animate-slide-right relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg order-1 lg:order-2 card-hover-lift">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
                             style="background-image: url('./assets/images/gallery/private_karaoke_room.jpg');"></div>
                     </div>
                 </div>
             </div>
             <div
-                class="bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden">
+                class="animate-on-scroll bg-background-card dark:bg-white/5 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden">
                 <div
-                    class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3">
+                    class="float-animation absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3">
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div class="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg">
-                        <div class="w-full h-full bg-cover bg-center"
+                    <div class="animate-slide-left relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-lg card-hover-lift">
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
                             style="background-image: url('./assets/images/gallery/the_great_lawn.jpg');"></div>
                     </div>
-                    <div>
+                    <div class="animate-slide-right">
                         <span
                             class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
                             Signature Feature
@@ -333,24 +334,24 @@
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">attractions</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Inflatable Bouncy
                                     Castle</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">sports_esports</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Mahjong &amp; Game
                                     Console</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">pedal_bike</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">Bicycles Available</span>
                             </div>
                             <div
-                                class="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+                                class="feature-card-hover flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-background-dark/50 shadow-sm border border-transparent hover:border-primary/20 transition-all">
                                 <span class="material-symbols-outlined text-primary">tv</span>
                                 <span class="font-bold text-text-main dark:text-white text-sm">TV Box
                                     Entertainment</span>
@@ -367,19 +368,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
                 <div
-                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                     Nearby
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">Explore the Neighborhood
+                <h2 class="animate-on-scroll stagger-1 text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">Explore the Neighborhood
                 </h2>
-                <p class="text-text-muted dark:text-gray-400">Discover amazing places just minutes from your doorstep in
+                <p class="animate-on-scroll stagger-2 text-text-muted dark:text-gray-400">Discover amazing places just minutes from your doorstep in
                     Taiping.</p>
             </div>
 
             <!-- Category Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-8">
+            <div class="animate-on-scroll stagger-3 flex flex-wrap justify-center gap-3 mb-8">
                 <button
                     class="map-tab bg-white text-text-main px-6 py-3 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft"
                     data-category="food" onclick="showCategory('food')">
@@ -398,12 +399,12 @@
             </div>
 
             <!-- Map Container -->
-            <div id="home-map" class="w-full h-[500px] rounded-2xl overflow-hidden shadow-soft"></div>
+            <div id="home-map" class="map-animate w-full h-[500px] rounded-2xl overflow-hidden shadow-soft"></div>
 
             <!-- Explore More Button -->
-            <div class="text-center mt-8">
+            <div class="animate-on-scroll text-center mt-8">
                 <a href="./pages/attractions.html"
-                    class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-0.5 shadow-soft">
+                    class="arrow-bounce btn-pulse inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all transform hover:-translate-y-1 shadow-soft">
                     Explore All Attractions
                     <span class="material-symbols-outlined">arrow_forward</span>
                 </a>
@@ -416,12 +417,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12">
                 <div
-                    class="flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                     Reviews
-                    <span class="w-8 h-[2px] bg-secondary"></span>
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">What Our Guests Say</h2>
+                <h2 class="animate-on-scroll stagger-1 text-3xl md:text-4xl font-bold text-text-main dark:text-white mb-4">What Our Guests Say</h2>
             </div>
 
             <!-- Review Carousel -->
@@ -431,8 +432,8 @@
                     <div class="flex transition-transform duration-300 ease-out" id="review-track">
                         <!-- Review 1 - Parveen -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                            <div class="review-card bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="star-animate flex items-center gap-1 text-yellow-500 mb-4"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
                                     "The house was huge and was like a home from Pinterest. Kelvin was so helpful and
                                     responsive. The house was clean, beds were so comfortable. The house had everything
@@ -454,8 +455,8 @@
 
                         <!-- Review 2 - Siau Hooi -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                            <div class="review-card bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="star-animate flex items-center gap-1 text-yellow-500 mb-4"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
                                     "Staying at this Airbnb was an absolute delight! Kelvin was incredibly welcoming and
                                     accommodating. The space was not only clean and cozy but also beautifully decorated.
@@ -477,8 +478,8 @@
 
                         <!-- Review 3 - Geraldine -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                            <div class="review-card bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="star-animate flex items-center gap-1 text-yellow-500 mb-4"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
                                     "Perfect accommodation for a big family. Very homely and pleasant place to stay in.
                                     Big yard for children to run around at, fully equipped kitchen, 3 mins drive to
@@ -499,8 +500,8 @@
 
                         <!-- Review 4 - Catherine -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                            <div class="review-card bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="star-animate flex items-center gap-1 text-yellow-500 mb-4"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
                                     "It was a great stay, love the cozy space with a beautiful garden and facilities. It
                                     is very kids friendly and thoughtful with baby chair and baby bathtub. Kelvin is a
@@ -521,8 +522,8 @@
 
                         <!-- Review 5 - Sau -->
                         <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
-                            <div class="bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
-                                <div class="flex items-center gap-1 text-yellow-500 mb-4">★★★★★</div>
+                            <div class="review-card bg-white dark:bg-white/5 rounded-2xl p-6 shadow-soft h-full flex flex-col">
+                                <div class="star-animate flex items-center gap-1 text-yellow-500 mb-4"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                 <blockquote class="text-text-main dark:text-white leading-relaxed flex-grow mb-4">
                                     "Overall stay is very satisfying as felt homey. Cleanliness is superb. Many
                                     facilities as shown - Mahjong, Karaoke, games etc made our stays more cheerful. The
@@ -568,22 +569,22 @@
 
     <!-- CTA Section -->
     <section class="py-20 bg-primary text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        <div class="float-slow absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
         </div>
         <div
-            class="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3">
+            class="float-animation absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3">
         </div>
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Ready for your escape?</h2>
-            <p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes
+            <h2 class="animate-on-scroll text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Ready for your escape?</h2>
+            <p class="animate-on-scroll stagger-1 text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your stay at 124 By Moonine Homes
                 and experience the perfect blend of comfort and style in Taiping.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <div class="animate-on-scroll stagger-2 flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="https://www.airbnb.com/rooms/1015848496504857562" target="_blank" rel="noopener noreferrer"
-                    class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
+                    class="btn-pulse bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transition-transform hover:-translate-y-1">
                     Book Now
                 </a>
                 <a href="./pages/contact.html"
-                    class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-colors">
+                    class="bg-primary-dark/50 text-white hover:bg-primary-dark border border-white/20 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:-translate-y-1">
                     Contact Host
                 </a>
             </div>
@@ -606,7 +607,101 @@
                 }
             }, 100);
 
-            // Review Carousel
+            // ===================================
+            // INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+            // ===================================
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        // Trigger line expand animation
+                        const lines = entry.target.querySelectorAll('.line-expand');
+                        lines.forEach(line => line.classList.add('animated'));
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll(
+                '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-fade-in, .map-animate, .star-animate'
+            );
+            animatedElements.forEach(el => animationObserver.observe(el));
+
+            // ===================================
+            // PARALLAX EFFECT FOR HERO BACKGROUND
+            // ===================================
+            const heroBg = document.getElementById('hero-bg');
+            if (heroBg) {
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const scrolled = window.pageYOffset;
+                            const rate = scrolled * 0.3;
+                            if (scrolled < window.innerHeight) {
+                                heroBg.style.transform = `translateY(${rate}px)`;
+                            }
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+            }
+
+            // ===================================
+            // COUNTER ANIMATION
+            // ===================================
+            const counters = document.querySelectorAll('.counter-animate');
+            let countersAnimated = false;
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => counterObserver.observe(counter));
+
+            function animateCounters() {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const start = 0;
+                    const startTime = performance.now();
+
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        // Easing function for smooth animation
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(easeOutQuart * target);
+
+                        counter.textContent = current.toLocaleString();
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
+                    }
+
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+
+            // ===================================
+            // REVIEW CAROUSEL
+            // ===================================
             const track = document.getElementById('review-track');
             const prevBtn = document.getElementById('review-prev');
             const nextBtn = document.getElementById('review-next');
@@ -649,6 +744,18 @@
                 window.addEventListener('resize', updateCarousel);
                 updateCarousel();
             }
+
+            // ===================================
+            // BUTTON RIPPLE EFFECT (OPTIONAL)
+            // ===================================
+            document.querySelectorAll('.btn-pulse').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.animation = 'none';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.animation = '';
+                });
+            });
         });
     </script>
 
