@@ -40,29 +40,35 @@
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <div id="header" class="min-h-[80px]"></div>
 
   <!-- Page Content -->
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="py-16 bg-background-card/50">
+    <section class="py-16 bg-background-card/50 overflow-hidden">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-6">About Us</h1>
-        <p class="text-lg text-text-muted">Learn more about 124 By Moonine Homes and your hosts.</p>
+        <div class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+          Our Story
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+        </div>
+        <h1 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main mb-6">About Us</h1>
+        <p class="animate-on-scroll stagger-2 text-lg text-text-muted">Learn more about 124 By Moonine Homes and your hosts.</p>
       </div>
     </section>
 
     <!-- Story Section -->
     <section class="py-20">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text-main mb-6">Our Story</h2>
-        <p class="text-text-muted leading-relaxed mb-6">
+        <h2 class="animate-on-scroll text-3xl font-bold text-text-main mb-6">Our Story</h2>
+        <p class="animate-on-scroll stagger-1 text-text-muted leading-relaxed mb-6">
           Welcome to 124 By Moonine Homes, a beautifully renovated 4900 sqft single-storey Semi-D located in Taman Taiping, Perak. Our home is strategically located with restaurants, cafes, shopping malls, and pubs just around the corner, making it the perfect base for your Taiping adventure.
         </p>
-        <p class="text-text-muted leading-relaxed mb-6">
+        <p class="animate-on-scroll stagger-2 text-text-muted leading-relaxed mb-6">
           Designed to accommodate up to 14 guests with 3 bedrooms + 1 attic bedroom, 6 beds, and 3 bathrooms (1 private ensuite + 2 shared), our home offers the perfect blend of space and comfort. Whether you're planning a family reunion, birthday party, corporate retreat, or a cozy weekend getaway, our home is the ideal venue.
         </p>
-        <p class="text-text-muted leading-relaxed">
+        <p class="animate-on-scroll stagger-3 text-text-muted leading-relaxed">
           Ranked in the top 10% of homes on Airbnb as a Guest Favorite, every corner of our home has been thoughtfully designed with our guests in mind - from the entertainment facilities to the fully equipped kitchen and comfortable sleeping arrangements.
         </p>
       </div>
@@ -71,8 +77,8 @@
     <!-- Meet Your Hosts Section -->
     <section class="py-20 bg-background-card/50">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text-main mb-8 text-center">Meet Your Hosts</h2>
-        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-soft">
+        <h2 class="animate-on-scroll text-3xl font-bold text-text-main mb-8 text-center">Meet Your Hosts</h2>
+        <div class="animate-on-scroll stagger-1 bg-white rounded-3xl p-8 md:p-12 shadow-soft card-hover-lift">
           <div class="flex flex-col md:flex-row items-center gap-8">
             <div class="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
               <span class="material-symbols-outlined text-5xl text-primary">supervisor_account</span>
@@ -104,45 +110,45 @@
     <!-- Why Choose Us Section -->
     <section class="py-20">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text-main mb-4 text-center">Why Choose Moonine Homes?</h2>
-        <p class="text-text-muted text-center mb-12 max-w-2xl mx-auto">Here's what sets us apart from other homestays in Taiping.</p>
+        <h2 class="animate-on-scroll text-3xl font-bold text-text-main mb-4 text-center">Why Choose Moonine Homes?</h2>
+        <p class="animate-on-scroll stagger-1 text-text-muted text-center mb-12 max-w-2xl mx-auto">Here's what sets us apart from other homestays in Taiping.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-1 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">family_restroom</span>
               <h3 class="font-bold text-text-main">Family-Friendly</h3>
             </div>
             <p class="text-sm text-text-muted">3 bedrooms on the ground floor, perfect for kids & elderly. No stairs to worry about!</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-2 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">cleaning_services</span>
               <h3 class="font-bold text-text-main">Spotless Clean</h3>
             </div>
             <p class="text-sm text-text-muted">Maintained by well-trained cleaners. Fresh linens confirmed changed every time.</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-3 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">schedule</span>
               <h3 class="font-bold text-text-main">12 PM Checkout</h3>
             </div>
             <p class="text-sm text-text-muted">More time to relax and pack! Most others only offer 11 AM checkout.</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-4 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">local_parking</span>
               <h3 class="font-bold text-text-main">Easy Parking</h3>
             </div>
             <p class="text-sm text-text-muted">1 car inside compound, 3+ cars outside. Spacious and convenient for multiple vehicles.</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-5 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">location_on</span>
               <h3 class="font-bold text-text-main">Great Location</h3>
             </div>
             <p class="text-sm text-text-muted">Close to top attractions, malls, restaurants & essentials. Everything within minutes!</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary">
+          <div class="animate-on-scroll stagger-6 bg-white p-6 rounded-2xl shadow-soft border-l-4 border-primary feature-card-hover">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-2xl text-primary">support_agent</span>
               <h3 class="font-bold text-text-main">Responsive Host</h3>
@@ -156,12 +162,12 @@
     <!-- Good to Know Section -->
     <section class="py-20 bg-background-card/50">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text-main mb-4 text-center">Good to Know</h2>
-        <p class="text-text-muted text-center mb-12">Important information for your stay.</p>
+        <h2 class="animate-on-scroll text-3xl font-bold text-text-main mb-4 text-center">Good to Know</h2>
+        <p class="animate-on-scroll stagger-1 text-text-muted text-center mb-12">Important information for your stay.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- What's Provided -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-1 bg-white rounded-2xl p-6 shadow-sm card-hover-lift">
             <h3 class="font-bold text-text-main mb-4 flex items-center gap-2">
               <span class="material-symbols-outlined text-primary">check_circle</span>
               What's Provided
@@ -195,7 +201,7 @@
           </div>
 
           <!-- What's NOT Provided -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-2 bg-white rounded-2xl p-6 shadow-sm card-hover-lift">
             <h3 class="font-bold text-text-main mb-4 flex items-center gap-2">
               <span class="material-symbols-outlined text-secondary">info</span>
               Please Bring Your Own
@@ -227,12 +233,12 @@
     <!-- House Rules Section -->
     <section class="py-20">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-text-main mb-4 text-center">House Rules</h2>
-        <p class="text-text-muted text-center mb-12">Please follow these guidelines to ensure a pleasant stay for everyone.</p>
+        <h2 class="animate-on-scroll text-3xl font-bold text-text-main mb-4 text-center">House Rules</h2>
+        <p class="animate-on-scroll stagger-1 text-text-muted text-center mb-12">Please follow these guidelines to ensure a pleasant stay for everyone.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Check-in/out -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-1 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-primary">schedule</span>
@@ -252,7 +258,7 @@
           </div>
 
           <!-- Quiet Hours -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-2 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-primary">volume_off</span>
@@ -265,7 +271,7 @@
           </div>
 
           <!-- No Smoking -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-3 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-secondary">smoke_free</span>
@@ -278,7 +284,7 @@
           </div>
 
           <!-- Furniture -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-4 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-primary">chair</span>
@@ -291,7 +297,7 @@
           </div>
 
           <!-- Kids Safety -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-5 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-primary">child_care</span>
@@ -304,7 +310,7 @@
           </div>
 
           <!-- Events -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <div class="animate-on-scroll stagger-6 bg-white rounded-2xl p-6 shadow-sm feature-card-hover">
             <div class="flex items-center gap-3 mb-4">
               <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-2xl text-secondary">celebration</span>
@@ -347,5 +353,31 @@
   <div id="footer"></div>
 
   <script src="../assets/js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            const lines = entry.target.querySelectorAll('.line-expand');
+            lines.forEach(line => line.classList.add('animated'));
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      const animatedElements = document.querySelectorAll(
+        '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-fade-in'
+      );
+      animatedElements.forEach(el => animationObserver.observe(el));
+    });
+  </script>
 </body>
 </html>

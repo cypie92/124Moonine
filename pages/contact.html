@@ -53,14 +53,20 @@
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased">
+  <link rel="stylesheet" href="../assets/css/styles.css" />
   <div id="header" class="min-h-[80px]"></div>
 
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="py-16 bg-background-card/50">
+    <section class="py-16 bg-background-card/50 overflow-hidden">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-6">Contact Us</h1>
-        <p class="text-lg text-text-muted">Get in touch or find us on the map.</p>
+        <div class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+          Get In Touch
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+        </div>
+        <h1 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main mb-6">Contact Us</h1>
+        <p class="animate-on-scroll stagger-2 text-lg text-text-muted">Have questions? We'd love to hear from you.</p>
       </div>
     </section>
 
@@ -70,12 +76,18 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Contact Info -->
           <div>
-            <h2 class="text-2xl font-bold text-text-main mb-8">Get In Touch</h2>
+            <h2 class="animate-on-scroll text-2xl font-bold text-text-main mb-4">Get In Touch</h2>
+
+            <!-- Response Time Badge -->
+            <div class="animate-on-scroll stagger-1 inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
+              <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Usually responds within 1 hour
+            </div>
 
             <div class="space-y-4">
               <!-- WhatsApp -->
               <a href="https://wa.me/601234567890" target="_blank" rel="noopener noreferrer"
-                class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-soft transition-all group border border-gray-100">
+                class="animate-on-scroll stagger-1 flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-soft transition-all group border border-gray-100 card-hover-lift">
                 <div
                   class="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center flex-shrink-0">
                   <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -92,7 +104,7 @@
 
               <!-- Email -->
               <a href="mailto:hello@moonine.com"
-                class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-soft transition-all group border border-gray-100">
+                class="animate-on-scroll stagger-2 flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm hover:shadow-soft transition-all group border border-gray-100 card-hover-lift">
                 <div
                   class="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0">
                   <span class="material-symbols-outlined text-2xl">mail</span>
@@ -105,7 +117,7 @@
               </a>
 
               <!-- Address -->
-              <div class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm border border-gray-100">
+              <div class="animate-on-scroll stagger-3 flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm border border-gray-100">
                 <div
                   class="w-14 h-14 rounded-full bg-secondary text-white flex items-center justify-center flex-shrink-0">
                   <span class="material-symbols-outlined text-2xl">location_on</span>
@@ -118,7 +130,7 @@
             </div>
 
             <!-- Social Links -->
-            <div class="mt-10">
+            <div class="animate-on-scroll stagger-4 mt-10">
               <h3 class="font-bold text-text-main mb-4 text-lg">Follow Us</h3>
               <div class="flex gap-3">
                 <a href="#" target="_blank" rel="noopener noreferrer"
@@ -146,7 +158,7 @@
             </div>
 
             <!-- Book Now CTA -->
-            <div class="mt-10 p-6 bg-primary/5 rounded-2xl border border-primary/10">
+            <div class="animate-on-scroll stagger-5 mt-10 p-6 bg-primary/5 rounded-2xl border border-primary/10">
               <h3 class="font-bold text-text-main text-lg mb-2">Ready to Book?</h3>
               <p class="text-text-muted text-sm mb-4">Visit our Airbnb listing for availability and booking.</p>
               <a href="https://www.airbnb.com/rooms/1015848496504857562" target="_blank" rel="noopener noreferrer"
@@ -158,8 +170,26 @@
           </div>
 
           <!-- Map -->
-          <div>
-            <div id="contact-map" class="w-full h-[400px] rounded-2xl overflow-hidden shadow-soft"></div>
+          <div class="animate-on-scroll">
+            <div id="contact-map" class="map-animate w-full h-[400px] rounded-2xl overflow-hidden shadow-soft"></div>
+
+            <!-- Languages & Availability -->
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div class="bg-white p-4 rounded-xl border border-gray-100">
+                <div class="flex items-center gap-2 text-primary mb-2">
+                  <span class="material-symbols-outlined text-lg">translate</span>
+                  <span class="font-semibold text-sm">Languages</span>
+                </div>
+                <p class="text-text-muted text-sm">English, Chinese, Malay</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl border border-gray-100">
+                <div class="flex items-center gap-2 text-primary mb-2">
+                  <span class="material-symbols-outlined text-lg">schedule</span>
+                  <span class="font-semibold text-sm">Availability</span>
+                </div>
+                <p class="text-text-muted text-sm">9 AM - 10 PM daily</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -178,6 +208,29 @@
           initContactMap('contact-map');
         }
       }, 100);
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            const lines = entry.target.querySelectorAll('.line-expand');
+            lines.forEach(line => line.classList.add('animated'));
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      const animatedElements = document.querySelectorAll(
+        '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-fade-in, .map-animate'
+      );
+      animatedElements.forEach(el => animationObserver.observe(el));
     });
   </script>
 </body>
