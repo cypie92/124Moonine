@@ -47,10 +47,15 @@
 
   <main class="pt-20">
     <!-- Hero Section -->
-    <section class="py-8 bg-background-card/50">
+    <section class="py-8 bg-background-card/50 overflow-hidden">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-text-main mb-4">Nearby Attractions</h1>
-        <p class="text-lg text-text-muted">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
+        <div class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+          Explore
+          <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+        </div>
+        <h1 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main mb-4">Nearby Attractions</h1>
+        <p class="animate-on-scroll stagger-2 text-lg text-text-muted">Discover amazing places around 124 By Moonine Homes in Taiping.</p>
       </div>
     </section>
 
@@ -60,10 +65,10 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <!-- Map -->
           <div class="lg:sticky lg:top-24 h-[400px] lg:h-[calc(100vh-150px)]">
-            <div id="attractions-map" class="w-full h-full rounded-2xl overflow-hidden shadow-soft"></div>
+            <div id="attractions-map" class="map-animate w-full h-full rounded-2xl overflow-hidden shadow-soft"></div>
 
             <!-- Legend -->
-            <div class="mt-4 flex flex-wrap gap-4 text-sm">
+            <div class="animate-on-scroll mt-4 flex flex-wrap gap-4 text-sm">
               <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full bg-[#D9886E]"></div>
                 <span class="text-text-muted">Food</span>
@@ -82,22 +87,22 @@
           <!-- List -->
           <div>
             <!-- Sticky Category Pills -->
-            <div class="sticky top-20 z-10 bg-background-light/95 backdrop-blur-sm py-4 -mx-4 px-4 mb-6">
+            <div class="animate-on-scroll sticky top-20 z-10 bg-background-light/95 backdrop-blur-sm py-4 -mx-4 px-4 mb-6">
               <div class="flex flex-wrap gap-2">
                 <button
-                  class="category-pill bg-secondary text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm"
+                  class="category-pill pill-animate bg-secondary text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-soft text-sm"
                   data-category="food" onclick="filterCategory('food')">
                   <span class="material-symbols-outlined align-middle mr-1 text-lg">restaurant</span> Food
                   <span class="ml-1 text-xs opacity-80" id="food-count"></span>
                 </button>
                 <button
-                  class="category-pill bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
+                  class="category-pill pill-animate bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
                   data-category="attraction" onclick="filterCategory('attraction')">
                   <span class="material-symbols-outlined align-middle mr-1 text-lg">photo_camera</span> Attractions
                   <span class="ml-1 text-xs opacity-80" id="attraction-count"></span>
                 </button>
                 <button
-                  class="category-pill bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
+                  class="category-pill pill-animate bg-white text-text-main px-5 py-2.5 rounded-full font-semibold transition-all shadow-sm hover:shadow-soft text-sm"
                   data-category="photoSpot" onclick="filterCategory('photoSpot')">
                   <span class="material-symbols-outlined align-middle mr-1 text-lg">landscape</span> Photo Spots
                   <span class="ml-1 text-xs opacity-80" id="photoSpot-count"></span>
@@ -155,13 +160,20 @@
         }
       });
 
-      // Show/hide category sections
+      // Show/hide category sections with animation re-trigger
       document.querySelectorAll('.category-section').forEach(section => {
         section.classList.add('hidden');
       });
       const activeSection = document.getElementById(`${category}-section`);
       if (activeSection) {
         activeSection.classList.remove('hidden');
+        // Re-trigger staggered list animations
+        const cards = activeSection.querySelectorAll('.list-item-animate');
+        cards.forEach((card, index) => {
+          card.style.animation = 'none';
+          card.offsetHeight; // Trigger reflow
+          card.style.animation = '';
+        });
       }
 
       // Filter map markers to show only current category
@@ -171,6 +183,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      // ===================================
+      // INTERSECTION OBSERVER FOR SCROLL ANIMATIONS
+      // ===================================
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            // Trigger line expand animation
+            const lines = entry.target.querySelectorAll('.line-expand');
+            lines.forEach(line => line.classList.add('animated'));
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      const animatedElements = document.querySelectorAll(
+        '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-fade-in, .map-animate'
+      );
+      animatedElements.forEach(el => animationObserver.observe(el));
+
       setTimeout(() => {
         if (typeof initAttractionsPageMap === 'function') {
           initAttractionsPageMap('attractions-map');
@@ -197,7 +235,7 @@
           if (items && items.length > 0) {
             items.forEach((item, index) => {
               const card = document.createElement('div');
-              card.className = 'bg-white rounded-xl p-4 shadow-sm hover:shadow-soft transition-all border border-gray-100 cursor-pointer';
+              card.className = 'attraction-card list-item-animate bg-white rounded-xl p-4 shadow-sm hover:shadow-soft border border-gray-100 cursor-pointer';
               card.innerHTML = `
                 <div class="flex gap-4 items-start">
                   <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover flex-shrink-0" onerror="this.style.display='none'">
