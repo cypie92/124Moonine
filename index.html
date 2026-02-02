@@ -64,6 +64,9 @@
 
 <body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased overflow-x-hidden">
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="scroll-progress"></div>
+
     <!-- Shared Header -->
     <div id="header" class="min-h-[80px]"></div>
 
@@ -94,14 +97,42 @@
                     &amp; gatherings in Taiping.
                 </p>
                 <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://www.airbnb.com/rooms/1015848496504857562"
+                        target="_blank" rel="noopener noreferrer"
+                        class="btn-pulse w-full sm:w-auto bg-primary hover:bg-primary-dark text-white h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2 hover:-translate-y-1 shadow-lg">
+                        <span>Book Now</span>
+                        <span class="material-symbols-outlined text-sm">calendar_month</span>
+                    </a>
                     <a href="https://www.airbnb.com/rooms/1015848496504857562?source_impression_id=p3_1768552046_P3xJimP1sqwbeRRC&modal=PHOTO_TOUR_SCROLLABLE"
                         target="_blank" rel="noopener noreferrer"
-                        class="btn-pulse w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+                        class="w-full sm:w-auto bg-white hover:bg-gray-50 dark:bg-white/10 dark:hover:bg-white/20 text-text-main dark:text-white border border-gray-200 dark:border-white/10 h-12 px-8 rounded-full font-bold text-base transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
                         <span>View Gallery</span>
                         <span class="material-symbols-outlined text-sm">photo_library</span>
                     </a>
                 </div>
+                <!-- Trust Badges -->
+                <div class="hero-trust-badges mt-8 flex flex-wrap justify-center gap-4 md:gap-6">
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span class="material-symbols-outlined text-yellow-400 text-lg">verified</span>
+                        <span class="text-sm font-semibold text-text-main dark:text-white">Superhost</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span class="material-symbols-outlined text-yellow-400 text-lg">star</span>
+                        <span class="text-sm font-semibold text-text-main dark:text-white">5.0 Rating</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span class="material-symbols-outlined text-primary text-lg">reviews</span>
+                        <span class="text-sm font-semibold text-text-main dark:text-white">42 Reviews</span>
+                    </div>
+                </div>
             </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 scroll-indicator">
+            <a href="#the-space" class="flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors">
+                <span class="text-xs font-medium tracking-wider uppercase">Scroll to explore</span>
+                <span class="material-symbols-outlined text-2xl animate-bounce">keyboard_arrow_down</span>
+            </a>
         </div>
     </section>
 
@@ -198,6 +229,92 @@
             </div>
         </div>
     </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-24 bg-background-card/30" id="gallery">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="animate-on-scroll flex items-center justify-center gap-2 text-secondary font-bold text-sm tracking-wide uppercase mb-3">
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+                    Gallery
+                    <span class="w-8 h-[2px] bg-secondary line-expand"></span>
+                </div>
+                <h2 class="animate-on-scroll stagger-1 text-4xl md:text-5xl font-bold text-text-main dark:text-white mb-4">Take a Look Around</h2>
+                <p class="animate-on-scroll stagger-2 text-lg text-text-muted dark:text-gray-400">Explore every corner of our beautiful space</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="animate-scale-in stagger-1 col-span-2 row-span-2 gallery-item group cursor-pointer overflow-hidden rounded-2xl" onclick="openLightbox(0)">
+                    <div class="relative w-full h-full min-h-[300px] md:min-h-[400px]">
+                        <img src="./assets/images/hero/landing_banner.jpg" alt="Living area" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-scale-in stagger-2 gallery-item group cursor-pointer overflow-hidden rounded-2xl" onclick="openLightbox(1)">
+                    <div class="relative w-full aspect-square">
+                        <img src="./assets/images/gallery/outdoor_bbq.jpg" alt="BBQ Area" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-scale-in stagger-3 gallery-item group cursor-pointer overflow-hidden rounded-2xl" onclick="openLightbox(2)">
+                    <div class="relative w-full aspect-square">
+                        <img src="./assets/images/gallery/private_karaoke_room.jpg" alt="Karaoke" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-scale-in stagger-4 gallery-item group cursor-pointer overflow-hidden rounded-2xl" onclick="openLightbox(3)">
+                    <div class="relative w-full aspect-square">
+                        <img src="./assets/images/gallery/the_great_lawn.jpg" alt="The Great Lawn" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-scale-in stagger-5 gallery-item group cursor-pointer overflow-hidden rounded-2xl" onclick="openLightbox(4)">
+                    <div class="relative w-full aspect-square">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtqbIW1Fi3-W91Qx-YtQ2VS1EtAOWSjM4-glQO-mpERpU6OpiAhApx27-chOP9bzyPJ4qsgUTznz2Lyczq50T9akP0012dlHnhIgNhorQoMJXG3H_MZft_tx6H62SaYb8JDkZyTYr1j31UDRtIR10vZyFoJd5Ux-XE4X5eYf6TEIPoTNxIXEULYNBqzHpB2b45FXP1R6_Bbh841jJpdnwK6Wbx-POeUfZX2UkRkgNh4o7oxYpDRj0iHPBhy9Av2S-8hLTzQQYhbJg" alt="Bedroom" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Photos Button -->
+            <div class="animate-on-scroll text-center mt-10">
+                <a href="https://www.airbnb.com/rooms/1015848496504857562?source_impression_id=p3_1768552046_P3xJimP1sqwbeRRC&modal=PHOTO_TOUR_SCROLLABLE"
+                   target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-text-main border border-gray-200 px-8 py-4 rounded-full font-bold transition-all hover:-translate-y-1 shadow-soft">
+                    <span class="material-symbols-outlined">photo_library</span>
+                    View All Photos on Airbnb
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center" onclick="closeLightbox(event)">
+        <button onclick="closeLightbox(event)" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <button onclick="prevImage(event)" class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 bg-white/10 hover:bg-white/20 rounded-full p-2">
+            <span class="material-symbols-outlined text-4xl">chevron_left</span>
+        </button>
+        <button onclick="nextImage(event)" class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-10 bg-white/10 hover:bg-white/20 rounded-full p-2">
+            <span class="material-symbols-outlined text-4xl">chevron_right</span>
+        </button>
+        <img id="lightbox-image" src="" alt="Gallery image" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg">
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm">
+            <span id="lightbox-counter"></span>
+        </div>
+    </div>
 
     <!-- Facilities Section -->
     <section class="py-24 bg-background-light dark:bg-background-dark relative" id="facilities">
@@ -594,6 +711,43 @@
     <!-- Shared Footer -->
     <div id="footer"></div>
 
+    <!-- Floating Book Now Bar (appears on scroll) -->
+    <div id="floating-book-bar" class="fixed bottom-0 left-0 right-0 z-40 transform translate-y-full transition-transform duration-300 md:hidden">
+        <div class="bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-3 shadow-lg">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-bold text-text-main truncate">124 By Moonine Homes</p>
+                    <p class="text-xs text-text-muted flex items-center gap-1">
+                        <span class="material-symbols-outlined text-yellow-500 text-xs">star</span>
+                        5.0 · 42 reviews
+                    </p>
+                </div>
+                <a href="https://www.airbnb.com/rooms/1015848496504857562"
+                   target="_blank" rel="noopener noreferrer"
+                   class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all flex-shrink-0">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Floating Book Bar -->
+    <div id="desktop-floating-bar" class="hidden md:block fixed top-0 left-0 right-0 z-40 transform -translate-y-full transition-transform duration-300">
+        <div class="bg-primary text-white py-2">
+            <div class="max-w-7xl mx-auto px-4 flex items-center justify-center gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-yellow-300">star</span>
+                    <span class="text-sm font-medium">5.0 Rating · 42 Reviews · Guest Favorite</span>
+                </div>
+                <a href="https://www.airbnb.com/rooms/1015848496504857562"
+                   target="_blank" rel="noopener noreferrer"
+                   class="bg-white text-primary hover:bg-gray-100 px-5 py-1.5 rounded-full font-bold text-sm transition-all">
+                    Check Availability
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./assets/js/components.js"></script>
@@ -756,6 +910,118 @@
                     this.style.animation = '';
                 });
             });
+
+            // ===================================
+            // LIGHTBOX GALLERY
+            // ===================================
+            const galleryImages = [
+                './assets/images/hero/landing_banner.jpg',
+                './assets/images/gallery/outdoor_bbq.jpg',
+                './assets/images/gallery/private_karaoke_room.jpg',
+                './assets/images/gallery/the_great_lawn.jpg',
+                'https://lh3.googleusercontent.com/aida-public/AB6AXuBtqbIW1Fi3-W91Qx-YtQ2VS1EtAOWSjM4-glQO-mpERpU6OpiAhApx27-chOP9bzyPJ4qsgUTznz2Lyczq50T9akP0012dlHnhIgNhorQoMJXG3H_MZft_tx6H62SaYb8JDkZyTYr1j31UDRtIR10vZyFoJd5Ux-XE4X5eYf6TEIPoTNxIXEULYNBqzHpB2b45FXP1R6_Bbh841jJpdnwK6Wbx-POeUfZX2UkRkgNh4o7oxYpDRj0iHPBhy9Av2S-8hLTzQQYhbJg'
+            ];
+            let currentImageIndex = 0;
+
+            window.openLightbox = function(index) {
+                currentImageIndex = index;
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImage = document.getElementById('lightbox-image');
+                const counter = document.getElementById('lightbox-counter');
+
+                lightboxImage.src = galleryImages[index];
+                counter.textContent = `${index + 1} / ${galleryImages.length}`;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeLightbox = function(event) {
+                if (event.target.id === 'lightbox' || event.target.closest('button[onclick*="closeLightbox"]')) {
+                    const lightbox = document.getElementById('lightbox');
+                    lightbox.classList.add('hidden');
+                    lightbox.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            window.nextImage = function(event) {
+                event.stopPropagation();
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                document.getElementById('lightbox-image').src = galleryImages[currentImageIndex];
+                document.getElementById('lightbox-counter').textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            };
+
+            window.prevImage = function(event) {
+                event.stopPropagation();
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                document.getElementById('lightbox-image').src = galleryImages[currentImageIndex];
+                document.getElementById('lightbox-counter').textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+            };
+
+            // Close lightbox on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const lightbox = document.getElementById('lightbox');
+                    if (!lightbox.classList.contains('hidden')) {
+                        lightbox.classList.add('hidden');
+                        lightbox.classList.remove('flex');
+                        document.body.style.overflow = '';
+                    }
+                }
+                if (e.key === 'ArrowRight') nextImage(e);
+                if (e.key === 'ArrowLeft') prevImage(e);
+            });
+
+            // ===================================
+            // FLOATING BOOK BAR ON SCROLL
+            // ===================================
+            const floatingBar = document.getElementById('floating-book-bar');
+            const desktopBar = document.getElementById('desktop-floating-bar');
+            const heroSection = document.querySelector('section.relative.min-h-\\[90vh\\]');
+
+            if (floatingBar && heroSection) {
+                let lastScrollY = 0;
+                const heroHeight = heroSection.offsetHeight;
+
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+
+                    // Show mobile floating bar after scrolling past hero
+                    if (scrollY > heroHeight * 0.8) {
+                        floatingBar.classList.remove('translate-y-full');
+                        floatingBar.classList.add('translate-y-0');
+                    } else {
+                        floatingBar.classList.add('translate-y-full');
+                        floatingBar.classList.remove('translate-y-0');
+                    }
+
+                    // Show desktop floating bar when scrolling down past hero
+                    if (desktopBar) {
+                        if (scrollY > heroHeight && scrollY > lastScrollY) {
+                            desktopBar.classList.remove('-translate-y-full');
+                            desktopBar.classList.add('translate-y-0');
+                        } else if (scrollY < heroHeight * 0.5) {
+                            desktopBar.classList.add('-translate-y-full');
+                            desktopBar.classList.remove('translate-y-0');
+                        }
+                    }
+
+                    lastScrollY = scrollY;
+                });
+            }
+
+            // ===================================
+            // SCROLL PROGRESS INDICATOR
+            // ===================================
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollProgress = (window.scrollY / scrollHeight) * 100;
+                    progressBar.style.width = scrollProgress + '%';
+                });
+            }
         });
     </script>
 
